@@ -10,14 +10,13 @@
     * { margin: 0; padding: 0; box-sizing: border-box; }
     
     :root {
-      --navy: #0A1628;
-      --navy-light: #111D35;
-      --teal: #14B8A6;
-      --teal-dark: #0D9488;
-      --bg: #0A1628;
-      --bg-card: #111D35;
-      --text: #F1F5F9;
-      --text-light: #94A3B8;
+      --primary: #4F46E5;
+      --primary-dark: #3730A3;
+      --accent: #F97316;
+      --bg: #FAFAFA;
+      --bg-dark: #F1F5F9;
+      --text: #1E293B;
+      --text-light: #64748B;
       --white: #FFFFFF;
     }
     
@@ -45,7 +44,7 @@
       gap: 0.75rem;
       font-weight: 800;
       font-size: 1.5rem;
-      color: var(--white);
+      color: var(--primary);
     }
     
     .logo-icon {
@@ -67,15 +66,15 @@
       transition: color 0.2s;
     }
     
-    .nav-links a:hover { color: var(--teal); }
+    .nav-links a:hover { color: var(--primary); }
     
     .btn {
-      background: var(--teal);
-      color: var(--navy);
+      background: var(--primary);
+      color: var(--white);
       padding: 0.75rem 1.5rem;
-      border-radius: 6px;
+      border-radius: 8px;
       text-decoration: none;
-      font-weight: 700;
+      font-weight: 600;
       font-size: 0.95rem;
       transition: all 0.2s;
       border: none;
@@ -86,29 +85,33 @@
     }
     
     .btn:hover {
-      background: var(--teal-dark);
+      background: var(--primary-dark);
       transform: translateY(-1px);
     }
     
     .btn-accent {
-      background: var(--teal);
+      background: var(--accent);
+    }
+    
+    .btn-accent:hover {
+      background: #EA580C;
     }
     
     .btn-outline {
       background: transparent;
-      border: 2px solid var(--teal);
-      color: var(--teal);
+      border: 2px solid var(--primary);
+      color: var(--primary);
     }
     
     .btn-outline:hover {
-      background: var(--teal);
-      color: var(--navy);
+      background: var(--primary);
+      color: var(--white);
     }
     
     /* HERO */
     .hero {
       text-align: center;
-      padding: 6rem 5% 5rem;
+      padding: 5rem 5% 4rem;
       max-width: 900px;
       margin: 0 auto;
     }
@@ -116,21 +119,21 @@
     .hero h1 {
       font-size: clamp(2.5rem, 6vw, 4rem);
       font-weight: 800;
-      line-height: 1.15;
-      margin-bottom: 1.75rem;
-      color: var(--white);
+      line-height: 1.1;
+      margin-bottom: 1.5rem;
+      color: var(--text);
     }
     
     .hero h1 span {
-      color: var(--teal);
+      color: var(--primary);
     }
     
     .hero-sub {
-      font-size: 1.2rem;
+      font-size: 1.25rem;
       color: var(--text-light);
-      max-width: 720px;
+      max-width: 680px;
       margin: 0 auto 2.5rem;
-      line-height: 1.8;
+      line-height: 1.7;
     }
     
     .waitlist-form {
@@ -143,23 +146,17 @@
     
     .waitlist-form input {
       padding: 0.875rem 1.25rem;
-      border: 2px solid #1E293B;
-      border-radius: 6px;
+      border: 2px solid #E2E8F0;
+      border-radius: 8px;
       font-size: 1rem;
       width: 280px;
       font-family: inherit;
-      background: var(--navy-light);
-      color: var(--white);
       transition: border-color 0.2s;
     }
     
     .waitlist-form input:focus {
       outline: none;
-      border-color: var(--teal);
-    }
-    
-    .waitlist-form input::placeholder {
-      color: var(--text-light);
+      border-color: var(--primary);
     }
     
     .waitlist-question {
@@ -172,40 +169,34 @@
       width: 100%;
       max-width: 500px;
       padding: 0.75rem;
-      border: 2px solid #1E293B;
-      border-radius: 6px;
+      border: 2px solid #E2E8F0;
+      border-radius: 8px;
       font-family: inherit;
       font-size: 0.9rem;
       resize: none;
       margin-top: 0.5rem;
-      background: var(--navy-light);
-      color: var(--white);
-    }
-    
-    .waitlist-question textarea::placeholder {
-      color: var(--text-light);
     }
     
     /* INTEGRATIONS CAROUSEL */
     .integrations {
       padding: 4rem 0;
-      background: var(--bg-card);
+      background: var(--white);
       overflow: hidden;
     }
     
     .integrations-label {
       text-align: center;
-      font-size: 0.85rem;
+      font-size: 0.9rem;
       font-weight: 600;
       color: var(--text-light);
       text-transform: uppercase;
       letter-spacing: 0.1em;
-      margin-bottom: 2.5rem;
+      margin-bottom: 2rem;
     }
     
     .carousel {
       display: flex;
-      gap: 3.5rem;
+      gap: 3rem;
       animation: scroll 30s linear infinite;
       width: max-content;
     }
@@ -222,10 +213,10 @@
       align-items: center;
       gap: 0.75rem;
       font-weight: 600;
-      font-size: 1.2rem;
+      font-size: 1.25rem;
       color: var(--text-light);
       white-space: nowrap;
-      opacity: 0.65;
+      opacity: 0.7;
       transition: opacity 0.2s;
     }
     
@@ -234,7 +225,6 @@
     .carousel-item svg {
       width: 32px;
       height: 32px;
-      flex-shrink: 0;
     }
     
     /* FEATURES */
@@ -249,7 +239,6 @@
       font-size: 2.25rem;
       font-weight: 700;
       margin-bottom: 1rem;
-      color: var(--white);
     }
     
     .section-sub {
@@ -263,28 +252,28 @@
     .feature-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-      gap: 1.5rem;
+      gap: 2rem;
     }
     
     .feature-card {
-      background: var(--bg-card);
-      border-radius: 4px;
+      background: var(--white);
+      border-radius: 16px;
       padding: 2rem;
-      border: 1px solid #1E293B;
+      border: 1px solid #E2E8F0;
       transition: all 0.3s;
     }
     
     .feature-card:hover {
-      border-color: var(--teal);
-      box-shadow: 0 0 40px rgba(20, 184, 166, 0.08);
+      border-color: var(--primary);
+      box-shadow: 0 20px 40px rgba(79, 70, 229, 0.1);
       transform: translateY(-4px);
     }
     
     .feature-icon {
-      width: 48px;
-      height: 48px;
-      background: var(--teal);
-      border-radius: 4px;
+      width: 56px;
+      height: 56px;
+      background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+      border-radius: 12px;
       display: flex;
       align-items: center;
       justify-content: center;
@@ -292,28 +281,27 @@
     }
     
     .feature-icon svg {
-      width: 24px;
-      height: 24px;
-      color: var(--navy);
+      width: 28px;
+      height: 28px;
+      color: var(--white);
     }
     
     .feature-card h3 {
-      font-size: 1.1rem;
+      font-size: 1.25rem;
       font-weight: 700;
       margin-bottom: 0.75rem;
-      color: var(--white);
     }
     
     .feature-card p {
       color: var(--text-light);
-      font-size: 0.9rem;
+      font-size: 0.95rem;
       line-height: 1.7;
     }
     
     /* HOW IT WORKS */
     .how-it-works {
       padding: 5rem 5%;
-      background: var(--bg-card);
+      background: var(--white);
     }
     
     .steps {
@@ -330,11 +318,11 @@
     }
     
     .step-num {
-      width: 60px;
-      height: 60px;
-      background: var(--teal);
-      color: var(--navy);
-      border-radius: 4px;
+      width: 64px;
+      height: 64px;
+      background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+      color: var(--white);
+      border-radius: 50%;
       display: flex;
       align-items: center;
       justify-content: center;
@@ -344,10 +332,9 @@
     }
     
     .step h3 {
-      font-size: 1.2rem;
+      font-size: 1.25rem;
       font-weight: 700;
       margin-bottom: 0.75rem;
-      color: var(--white);
     }
     
     .step p {
@@ -365,72 +352,69 @@
     
     .use-case-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-      gap: 1.5rem;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 2rem;
     }
     
     .use-case {
-      background: var(--bg-card);
-      border: 1px solid #1E293B;
-      border-radius: 4px;
+      background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+      color: var(--white);
+      border-radius: 20px;
       padding: 2.5rem;
     }
     
     .use-case h3 {
-      font-size: 1.1rem;
+      font-size: 1.25rem;
       font-weight: 700;
       margin-bottom: 1rem;
-      color: var(--teal);
     }
     
     .use-case p {
-      color: var(--text-light);
-      font-size: 0.9rem;
+      opacity: 0.9;
+      font-size: 0.95rem;
       line-height: 1.7;
     }
     
     /* PRICING */
     .pricing {
       padding: 5rem 5%;
-      background: var(--bg-card);
+      background: var(--bg-dark);
     }
     
     .pricing-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 1.5rem;
+      gap: 2rem;
       max-width: 1000px;
       margin: 0 auto;
     }
     
     .pricing-card {
-      background: var(--bg);
-      border-radius: 4px;
+      background: var(--white);
+      border-radius: 20px;
       padding: 2.5rem;
       text-align: center;
-      border: 1px solid #1E293B;
+      border: 2px solid transparent;
       transition: all 0.3s;
     }
     
     .pricing-card.popular {
-      border-color: var(--teal);
-      box-shadow: 0 0 40px rgba(20, 184, 166, 0.15);
+      border-color: var(--primary);
+      transform: scale(1.03);
+      box-shadow: 0 20px 60px rgba(79, 70, 229, 0.2);
     }
     
     .pricing-card h3 {
-      font-size: 1.1rem;
+      font-size: 1.25rem;
       font-weight: 700;
       margin-bottom: 0.5rem;
-      color: var(--text-light);
-      text-transform: uppercase;
-      letter-spacing: 0.05em;
     }
     
     .price {
       font-size: 3rem;
       font-weight: 800;
-      color: var(--teal);
-      margin-bottom: 0.25rem;
+      color: var(--primary);
+      margin-bottom: 0.5rem;
     }
     
     .price span {
@@ -441,14 +425,13 @@
     
     .pricing-desc {
       color: var(--text-light);
-      font-size: 0.85rem;
+      font-size: 0.9rem;
       margin-bottom: 1.5rem;
     }
     
     .pricing-features {
       text-align: left;
       margin-bottom: 2rem;
-      list-style: none;
     }
     
     .pricing-features li {
@@ -456,14 +439,14 @@
       align-items: center;
       gap: 0.75rem;
       padding: 0.5rem 0;
-      font-size: 0.875rem;
-      color: var(--text-light);
+      font-size: 0.9rem;
+      color: var(--text);
     }
     
     .pricing-features li svg {
-      width: 16px;
-      height: 16px;
-      color: var(--teal);
+      width: 20px;
+      height: 20px;
+      color: var(--primary);
       flex-shrink: 0;
     }
     
@@ -475,44 +458,38 @@
     }
     
     .faq-item {
-      border-bottom: 1px solid #1E293B;
+      border-bottom: 1px solid #E2E8F0;
       padding: 1.5rem 0;
     }
     
-    .faq-item:first-of-type {
-      border-top: 1px solid #1E293B;
-    }
-    
     .faq-item h3 {
-      font-size: 1rem;
+      font-size: 1.1rem;
       font-weight: 600;
       margin-bottom: 0.75rem;
-      color: var(--white);
     }
     
     .faq-item p {
       color: var(--text-light);
-      font-size: 0.9rem;
+      font-size: 0.95rem;
       line-height: 1.7;
     }
     
     /* CTA */
     .cta {
       padding: 5rem 5%;
-      background: var(--teal);
+      background: linear-gradient(135deg, var(--primary), var(--primary-dark));
       text-align: center;
-      color: var(--navy);
+      color: var(--white);
     }
     
     .cta h2 {
       font-size: 2.5rem;
       font-weight: 800;
       margin-bottom: 1rem;
-      color: var(--navy);
     }
     
     .cta p {
-      opacity: 0.85;
+      opacity: 0.9;
       font-size: 1.1rem;
       margin-bottom: 2rem;
       max-width: 500px;
@@ -521,14 +498,14 @@
     }
     
     .cta .btn {
-      background: var(--navy);
-      color: var(--white);
+      background: var(--white);
+      color: var(--primary);
       font-size: 1.1rem;
       padding: 1rem 2rem;
     }
     
     .cta .btn:hover {
-      background: var(--navy-light);
+      background: var(--bg);
     }
     
     /* FOOTER */
@@ -536,15 +513,15 @@
       padding: 2rem 5%;
       text-align: center;
       color: var(--text-light);
-      font-size: 0.85rem;
-      background: var(--bg);
+      font-size: 0.9rem;
     }
     
     /* RESPONSIVE */
     @media (max-width: 768px) {
       .nav-links { display: none; }
-      .hero { padding: 4rem 5% 3rem; }
+      .hero { padding: 3rem 5% 2rem; }
       .section-title { font-size: 1.75rem; }
+      .pricing-card.popular { transform: none; }
       .waitlist-form input { width: 100%; }
     }
   </style>
@@ -555,12 +532,12 @@
   <nav>
     <div class="logo">
       <svg class="logo-icon" viewBox="0 0 40 40" fill="none">
-        <circle cx="20" cy="20" r="18" fill="#14B8A6"/>
-        <circle cx="20" cy="14" r="5" fill="#0A1628"/>
-        <circle cx="12" cy="26" r="4" fill="#0A1628" opacity="0.8"/>
-        <circle cx="28" cy="26" r="4" fill="#0A1628" opacity="0.8"/>
-        <path d="M20 19V24M17 24L20 26L23 24" stroke="#0A1628" stroke-width="1.5" stroke-linecap="round"/>
-        <path d="M12 22L17 17M28 22L23 17" stroke="#0A1628" stroke-width="1.5" stroke-linecap="round" opacity="0.6"/>
+        <circle cx="20" cy="20" r="18" fill="#4F46E5"/>
+        <circle cx="20" cy="14" r="5" fill="white"/>
+        <circle cx="12" cy="26" r="4" fill="white" opacity="0.8"/>
+        <circle cx="28" cy="26" r="4" fill="white" opacity="0.8"/>
+        <path d="M20 19V24M17 24L20 26L23 24" stroke="white" stroke-width="1.5" stroke-linecap="round"/>
+        <path d="M12 22L17 17M28 22L23 17" stroke="white" stroke-width="1.5" stroke-linecap="round" opacity="0.6"/>
       </svg>
       Kobrain
     </div>
@@ -581,7 +558,7 @@
     </p>
     <form class="waitlist-form" onsubmit="handleSubmit(event)">
       <input type="email" placeholder="your@email.com" required>
-      <button type="submit" class="btn btn-accent">Join Waitlist →</button>
+      <button type="submit" class="btn btn-accent">Join Waitlist</button>
     </form>
     <p class="waitlist-question">What would you want your teammate to do? (optional)</p>
     <textarea rows="3" placeholder="Example: Handle my customer emails, manage my calendar, update my Notion pages..."></textarea>
@@ -591,162 +568,70 @@
   <section class="integrations">
     <p class="integrations-label">Works with your tools</p>
     <div class="carousel">
-      <!-- Gmail -->
       <div class="carousel-item">
-        <svg viewBox="0 0 24 24" fill="none">
-          <rect width="24" height="24" rx="2" fill="#EA4335"/>
-          <path d="M2 6L12 13L22 6" stroke="white" stroke-width="2" stroke-linecap="round"/>
-          <path d="M2 6V18H22V6" stroke="white" stroke-width="2" stroke-linecap="round"/>
-        </svg>
+        <svg viewBox="0 0 24 24" fill="#EA4335"><path d="M1 1h10v10H1V1zm11 11h10v10H12V12zM1 13h10v10H1V13z"/></svg>
         Gmail
       </div>
-      <!-- Google Calendar -->
       <div class="carousel-item">
-        <svg viewBox="0 0 24 24" fill="none">
-          <rect width="24" height="24" rx="2" fill="#4285F4"/>
-          <rect x="2" y="4" width="20" height="18" rx="2" stroke="white" stroke-width="1.5" fill="none"/>
-          <path d="M2 9H22" stroke="white" stroke-width="1.5"/>
-          <path d="M8 2V6M16 2V6" stroke="white" stroke-width="1.5" stroke-linecap="round"/>
-          <rect x="6" y="12" width="3" height="3" rx="0.5" fill="white"/>
-          <rect x="10" y="12" width="3" height="3" rx="0.5" fill="white"/>
-        </svg>
-        Calendar
+        <svg viewBox="0 0 24 24" fill="#4285F4"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg>
+        Google Calendar
       </div>
-      <!-- Google Docs -->
       <div class="carousel-item">
-        <svg viewBox="0 0 24 24" fill="none">
-          <rect width="24" height="24" rx="2" fill="#258AF7"/>
-          <path d="M7 3H14L21 10V21H7V3Z" stroke="white" stroke-width="1.5" fill="none" stroke-linejoin="round"/>
-          <path d="M14 3V10H21" stroke="white" stroke-width="1.5" stroke-linejoin="round"/>
-          <path d="M8 14H16M8 17H13" stroke="white" stroke-width="1.5" stroke-linecap="round"/>
-        </svg>
-        Google Docs
+        <svg viewBox="0 0 24 24" fill="#FF9900"><path d="M4 4h16v16H4V4zm2 2v12h12V6H6zm2 2h8v2H8V8zm0 4h8v2H8v-2z"/></svg>
+        Google Sheets
       </div>
-      <!-- Google Drive -->
       <div class="carousel-item">
-        <svg viewBox="0 0 24 24" fill="none">
-          <path d="M8.5 20L12 3L21 9H8.5Z" fill="#0066DA"/>
-          <path d="M8.5 20L12 13L15.5 20H8.5Z" fill="#00AC47"/>
-          <path d="M8.5 9L12 3L15.5 9H8.5Z" fill="#00832D"/>
-          <path d="M15.5 20L12 13L8.5 20H15.5Z" fill="#2684FC"/>
-          <path d="M15.5 9L12 13L8.5 9H15.5Z" fill="#FFB900"/>
-        </svg>
-        Google Drive
-      </div>
-      <!-- Telegram -->
-      <div class="carousel-item">
-        <svg viewBox="0 0 24 24" fill="none">
-          <circle cx="12" cy="12" r="11" fill="#2AABEE"/>
-          <path d="M17 9.5C17 9.5 16.4 11.5 15.5 12.5C14.6 13.5 13.5 14 12.5 14C10.5 14 8.5 13 7.5 11.5C6.5 10 7 8.5 7.5 7.5C7.7 7.1 8.1 6.9 8.5 7C8.9 7.1 12 9 12 9C12.5 9.3 12.8 9.6 13 10C13.3 10.5 13.2 11.2 12.9 11.5C12.6 11.8 12 12 12 12C12 12 14.5 14.5 15.5 15.5C16 16 16.5 16.5 17 16.5C17.2 16.5 17.7 16.4 17.9 16.1C18 15.9 18 15.7 18 15.5C18 15.5 17.5 14 17.5 13.5C17.4 13 18 12 18 12" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-        </svg>
-        Telegram
-      </div>
-      <!-- Notion -->
-      <div class="carousel-item">
-        <svg viewBox="0 0 24 24" fill="none">
-          <rect width="24" height="24" rx="3" fill="#1E1E1E"/>
-          <path d="M6 6H10.5L11.5 10.5H11V6H15V18H11V13.5H10.5L9.5 18H6V6Z" fill="white"/>
-          <path d="M13 8.5H17.5L18.5 13H18V8.5H21.5V18H18.5L17.5 13H17V18H13V8.5Z" fill="white"/>
-        </svg>
+        <svg viewBox="0 0 24 24" fill="#4F46E5"><path d="M4 4h16v16H4V4zm2 2v12h12V6H6zm2 2h8v2H8V8zm0 4h5v2H8v-2zm0 4h8v2H8v-2z"/></svg>
         Notion
       </div>
-      <!-- GitHub -->
       <div class="carousel-item">
-        <svg viewBox="0 0 24 24" fill="none">
-          <circle cx="12" cy="12" r="11" fill="#1E1E1E"/>
-          <path d="M12 2C6.48 2 2 6.48 2 12C2 16.42 4.87 20.17 8.84 21.49C9.34 21.58 9.5 21.27 9.5 21.01C9.5 20.77 9.5 20.12 9.5 19.26C7 19.74 6.35 18.14 6.35 18.14C5.83 16.78 5.1 16.44 5.1 16.44C4.25 15.8 5.15 15.81 5.15 15.81C6.08 15.88 6.63 16.71 6.63 16.71C7.5 18.12 8.87 17.7 9.54 17.45C9.63 16.8 9.89 16.36 10.17 16.11C7.95 15.85 5.62 14.98 5.62 11.1C5.62 10.08 6 9.29 6.65 8.67C6.55 8.48 6.2 7.53 6.73 6.31C6.73 6.31 7.54 6.04 9.5 7.29C10.24 7.05 11.12 6.93 12 6.93C12.88 6.93 13.76 7.05 14.5 7.29C16.46 6.04 17.27 6.31 17.27 6.31C17.8 7.53 17.45 8.48 17.35 8.67C18 9.29 18.38 10.08 18.38 11.1C18.38 14.98 16.04 15.84 13.81 16.1C14.16 16.42 14.5 17.01 14.5 17.94C14.5 19.33 14.5 20.42 14.5 21.01C14.5 21.27 14.66 21.59 15.17 21.49C19.14 20.16 22 16.42 22 12C22 6.48 17.52 2 12 2Z" fill="white"/>
-        </svg>
+        <svg viewBox="0 0 24 24" fill="#30A3DC"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
+        Google Drive
+      </div>
+      <div class="carousel-item">
+        <svg viewBox="0 0 24 24" fill="#333"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
         GitHub
       </div>
-      <!-- Vercel -->
       <div class="carousel-item">
-        <svg viewBox="0 0 24 24" fill="none">
-          <rect width="24" height="24" rx="6" fill="#1E1E1E"/>
-          <path d="M12 4L20 16H4L12 4Z" fill="white"/>
-        </svg>
+        <svg viewBox="0 0 24 24" fill="#333"><path d="M12 0L1.5 9.5l10.5 9.5L23 9.5 12 0zm0 4l6.5 6L12 18l-6.5-6.5L12 4z"/></svg>
         Vercel
       </div>
-      <!-- Supabase -->
       <div class="carousel-item">
-        <svg viewBox="0 0 24 24" fill="none">
-          <rect width="24" height="24" rx="4" fill="#3ECF8E"/>
-          <path d="M8 16L12 8L16 16" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-          <path d="M7 19H17" stroke="white" stroke-width="2" stroke-linecap="round"/>
-        </svg>
+        <svg viewBox="0 0 24 24" fill="#4F46E5"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
         Supabase
       </div>
-      <!-- Stripe -->
       <div class="carousel-item">
-        <svg viewBox="0 0 24 24" fill="none">
-          <rect width="24" height="24" rx="4" fill="#646B7B"/>
-          <path d="M11.5 9.5C11.5 8.67 11.17 8.25 10.5 8.25C9.83 8.25 9.5 8.67 9.5 9.5C9.5 10.33 10 11.25 11.5 12.5C13 11.25 13.5 10.33 13.5 9.5C13.5 8.67 13.17 8.25 12.5 8.25C11.83 8.25 11.5 8.67 11.5 9.5ZM14.5 9.5C14.5 8.67 14.17 8.25 13.5 8.25C12.83 8.25 12.5 8.67 12.5 9.5C12.5 10.33 13 11.25 14.5 12.5C16 11.25 16.5 10.33 16.5 9.5C16.5 8.67 16.17 8.25 15.5 8.25C14.83 8.25 14.5 8.67 14.5 9.5ZM10.5 9.5C10.5 10.33 10.83 11.25 10.5 12C10.17 11.25 10.5 10.33 10.5 9.5Z" fill="white"/>
-          <path d="M17 14.5C17 13.12 15.38 12.25 13.5 12.25C11.62 12.25 10 13.12 10 14.5C10 16.38 13 17 13 17H17V14.5Z" fill="white"/>
-        </svg>
+        <svg viewBox="0 0 24 24" fill="#646B7B"><path d="M4.5 4h15A1.5 1.5 0 0121 5.5v13a1.5 1.5 0 01-1.5 1.5h-15A1.5 1.5 0 013 18.5v-13A1.5 1.5 0 014.5 4zM7 8h10v2H7V8zm0 4h7v2H7v-2z"/></svg>
         Stripe
       </div>
-      <!-- Discord -->
       <div class="carousel-item">
-        <svg viewBox="0 0 24 24" fill="none">
-          <circle cx="12" cy="12" r="11" fill="#5865F2"/>
-          <path d="M9 9.5C9 9.5 9 8.5 9 8C9 7.5 9.2 7 9.5 7C10.3 7 11 7.5 11.5 8C11.5 8 11.5 8 11.5 8C11.5 8 12 8 12.5 8C13 8 13.5 7.5 13.5 7C13.8 7 14 7.5 14 8C14 8.5 14 9.5 14 9.5C14 9.5 14.5 10 15 10C15.5 10 16 9.5 16 9.5L14.5 11C14.5 11 14 11 13.5 11C13 11 13 11.5 13 11.5C13 11.5 12.5 12 12 12C11.5 12 11 12 10.5 11.5C10.5 11.5 10 11 10 11C10 11 9.5 11 9.5 11C9.5 11 9.5 10.5 10 10C10.5 10 11 9.5 11.5 9.5C11.5 9.5 11 9.5 10.5 9.5L9 9.5Z" fill="white"/>
-          <circle cx="8.5" cy="10" r="1.5" fill="white"/>
-          <circle cx="15.5" cy="10" r="1.5" fill="white"/>
-        </svg>
-        Discord
+        <svg viewBox="0 0 24 24" fill="#000"><circle cx="12" cy="12" r="10" fill="none" stroke="#000" stroke-width="2"/><path d="M8 12h8M12 8v8" stroke="#000" stroke-width="2"/></svg>
+        Telegram
       </div>
       <!-- Duplicate for seamless loop -->
       <div class="carousel-item">
-        <svg viewBox="0 0 24 24" fill="none">
-          <rect width="24" height="24" rx="2" fill="#EA4335"/>
-          <path d="M2 6L12 13L22 6" stroke="white" stroke-width="2" stroke-linecap="round"/>
-          <path d="M2 6V18H22V6" stroke="white" stroke-width="2" stroke-linecap="round"/>
-        </svg>
+        <svg viewBox="0 0 24 24" fill="#EA4335"><path d="M1 1h10v10H1V1zm11 11h10v10H12V12zM1 13h10v10H1V13z"/></svg>
         Gmail
       </div>
       <div class="carousel-item">
-        <svg viewBox="0 0 24 24" fill="none">
-          <rect width="24" height="24" rx="2" fill="#4285F4"/>
-          <rect x="2" y="4" width="20" height="18" rx="2" stroke="white" stroke-width="1.5" fill="none"/>
-          <path d="M2 9H22" stroke="white" stroke-width="1.5"/>
-          <path d="M8 2V6M16 2V6" stroke="white" stroke-width="1.5" stroke-linecap="round"/>
-          <rect x="6" y="12" width="3" height="3" rx="0.5" fill="white"/>
-          <rect x="10" y="12" width="3" height="3" rx="0.5" fill="white"/>
-        </svg>
-        Calendar
+        <svg viewBox="0 0 24 24" fill="#4285F4"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg>
+        Google Calendar
       </div>
       <div class="carousel-item">
-        <svg viewBox="0 0 24 24" fill="none">
-          <rect width="24" height="24" rx="2" fill="#258AF7"/>
-          <path d="M7 3H14L21 10V21H7V3Z" stroke="white" stroke-width="1.5" fill="none" stroke-linejoin="round"/>
-          <path d="M14 3V10H21" stroke="white" stroke-width="1.5" stroke-linejoin="round"/>
-          <path d="M8 14H16M8 17H13" stroke="white" stroke-width="1.5" stroke-linecap="round"/>
-        </svg>
-        Google Docs
+        <svg viewBox="0 0 24 24" fill="#FF9900"><path d="M4 4h16v16H4V4zm2 2v12h12V6H6zm2 2h8v2H8V8zm0 4h8v2H8v-2z"/></svg>
+        Google Sheets
       </div>
       <div class="carousel-item">
-        <svg viewBox="0 0 24 24" fill="none">
-          <path d="M8.5 20L12 3L21 9H8.5Z" fill="#0066DA"/>
-          <path d="M8.5 20L12 13L15.5 20H8.5Z" fill="#00AC47"/>
-          <path d="M8.5 9L12 3L15.5 9H8.5Z" fill="#00832D"/>
-          <path d="M15.5 20L12 13L8.5 20H15.5Z" fill="#2684FC"/>
-          <path d="M15.5 9L12 13L8.5 9H15.5Z" fill="#FFB900"/>
-        </svg>
+        <svg viewBox="0 0 24 24" fill="#4F46E5"><path d="M4 4h16v16H4V4zm2 2v12h12V6H6zm2 2h8v2H8V8zm0 4h5v2H8v-2zm0 4h8v2H8v-2z"/></svg>
+        Notion
+      </div>
+      <div class="carousel-item">
+        <svg viewBox="0 0 24 24" fill="#30A3DC"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
         Google Drive
       </div>
       <div class="carousel-item">
-        <svg viewBox="0 0 24 24" fill="none">
-          <circle cx="12" cy="12" r="11" fill="#2AABEE"/>
-          <path d="M17 9.5C17 9.5 16.4 11.5 15.5 12.5C14.6 13.5 13.5 14 12.5 14C10.5 14 8.5 13 7.5 11.5C6.5 10 7 8.5 7.5 7.5C7.7 7.1 8.1 6.9 8.5 7C8.9 7.1 12 9 12 9C12.5 9.3 12.8 9.6 13 10C13.3 10.5 13.2 11.2 12.9 11.5C12.6 11.8 12 12 12 12C12 12 14.5 14.5 15.5 15.5C16 16 16.5 16.5 17 16.5C17.2 16.5 17.7 16.4 17.9 16.1C18 15.9 18 15.7 18 15.5C18 15.5 17.5 14 17.5 13.5C17.4 13 18 12 18 12" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-        </svg>
-        Telegram
-      </div>
-      <div class="carousel-item">
-        <svg viewBox="0 0 24 24" fill="none">
-          <rect width="24" height="24" rx="3" fill="#1E1E1E"/>
-          <path d="M6 6H10.5L11.5 10.5H11V6H15V18H11V13.5H10.5L9.5 18H6V6Z" fill="white"/>
-          <path d="M13 8.5H17.5L18.5 13H18V8.5H21.5V18H18.5L17.5 13H17V18H13V8.5Z" fill="white"/>
-        </svg>
-        Notion
+        <svg viewBox="0 0 24 24" fill="#333"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
+        GitHub
       </div>
     </div>
   </section>
@@ -770,14 +655,14 @@
           <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"/></svg>
         </div>
         <h3>Codes & Uses Developer Tools</h3>
-        <p>Kobrain connects to GitHub, Vercel, Supabase, and more. It writes code, pushes commits, reviews PRs, and manages deployments — like a developer teammate who never sleeps.</p>
+        <p>Kobrain connects to GitHub, Vercel, Supabase, and more. It can write code, push commits, review PRs, manage deployments — like a developer teammate who never sleeps.</p>
       </div>
       
       <div class="feature-card">
         <div class="feature-icon">
-          <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/></svg>
+          <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M4 4h16v16H4V4zm2 4v12h12V8H6z"/></svg>
         </div>
-        <h3>Manages Files & Docs</h3>
+        <h3>Manages Your Files & Docs</h3>
         <p>Connects to Google Drive, Docs, Notion, and more. Reads your documents, updates your files, keeps your knowledge base current — without you lifting a finger.</p>
       </div>
       
@@ -786,12 +671,12 @@
           <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/></svg>
         </div>
         <h3>Runs Your Calendar</h3>
-        <p>Schedules meetings, sends invites, manages your time. Kobrain coordinates your schedule so you can focus on work that actually matters.</p>
+        <p>Schedules meetings, sends invites, manages your calendar. Kobrain coordinates your time so you can focus on work that actually matters.</p>
       </div>
       
       <div class="feature-card">
         <div class="feature-icon">
-          <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M4 4h16v16H4V4zm2 4v12h12V8H6z"/></svg>
+          <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"/></svg>
         </div>
         <h3>Remembers Everything</h3>
         <p>Kobrain has a persistent memory of your preferences, your projects, your team. It learns how you work and gets better over time. Like a teammate who's been there from day one.</p>
@@ -802,7 +687,7 @@
           <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
         </div>
         <h3>Works While You Sleep</h3>
-        <p>You delegate at 11pm. You wake up to completed tasks. Kobrain runs on your schedule — nights, weekends, whenever. You don't wait on your teammate.</p>
+        <p>You delegate at 11pm. You wake up to completed tasks. Kobrain runs on your schedule — night shifts, weekends, whenever you need. You don't wait on your teammate.</p>
       </div>
     </div>
   </section>
@@ -816,7 +701,7 @@
       <div class="step">
         <div class="step-num">1</div>
         <h3>Create Your Kobrain</h3>
-        <p>Give it a name, an email address, and define its role. What does it do? What's off-limits? You set the rules. Kobrain learns from how you work.</p>
+        <p>Give it a name, an email address, and define its role. What does it do? What's off-limits? You set the rules. Kobrain learns from how you want to work.</p>
       </div>
       
       <div class="step">
@@ -861,42 +746,42 @@
     <div class="pricing-grid">
       <div class="pricing-card">
         <h3>Starter</h3>
-        <div class="price">$20<span>/mo</span></div>
+        <div class="price">$20<span>/month</span></div>
         <p class="pricing-desc">One AI teammate. Core integrations.</p>
         <ul class="pricing-features">
-          <li><svg fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M5 13l4 4L19 7"/></svg> 1 Kobrain teammate</li>
-          <li><svg fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M5 13l4 4L19 7"/></svg> Email inbox (Gmail)</li>
-          <li><svg fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M5 13l4 4L19 7"/></svg> Notion + Calendar</li>
-          <li><svg fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M5 13l4 4L19 7"/></svg> 10GB storage</li>
-          <li><svg fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M5 13l4 4L19 7"/></svg> Email support</li>
+          <li><svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M5 13l4 4L19 7"/></svg> 1 Kobrain teammate</li>
+          <li><svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M5 13l4 4L19 7"/></svg> Email inbox</li>
+          <li><svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M5 13l4 4L19 7"/></svg> Gmail + Notion + Calendar</li>
+          <li><svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M5 13l4 4L19 7"/></svg> 10GB storage</li>
+          <li><svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M5 13l4 4L19 7"/></svg> Email support</li>
         </ul>
         <a href="#waitlist" class="btn btn-outline" style="width:100%;justify-content:center;">Join Waitlist</a>
       </div>
       
       <div class="pricing-card popular">
         <h3>Pro</h3>
-        <div class="price">$50<span>/mo</span></div>
+        <div class="price">$50<span>/month</span></div>
         <p class="pricing-desc">All integrations. More power.</p>
         <ul class="pricing-features">
-          <li><svg fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M5 13l4 4L19 7"/></svg> Everything in Starter</li>
-          <li><svg fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M5 13l4 4L19 7"/></svg> GitHub + Vercel + Supabase</li>
-          <li><svg fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M5 13l4 4L19 7"/></svg> Drive + Sheets + Docs</li>
-          <li><svg fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M5 13l4 4L19 7"/></svg> 50GB storage</li>
-          <li><svg fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M5 13l4 4L19 7"/></svg> Priority support</li>
+          <li><svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M5 13l4 4L19 7"/></svg> Everything in Starter</li>
+          <li><svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M5 13l4 4L19 7"/></svg> GitHub + Vercel + Supabase</li>
+          <li><svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M5 13l4 4L19 7"/></svg> Drive + Sheets + Docs</li>
+          <li><svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M5 13l4 4L19 7"/></svg> 50GB storage</li>
+          <li><svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M5 13l4 4L19 7"/></svg> Priority support</li>
         </ul>
-        <a href="#waitlist" class="btn btn-accent" style="width:100%;justify-content:center;">Join Waitlist →</a>
+        <a href="#waitlist" class="btn btn-accent" style="width:100%;justify-content:center;">Join Waitlist</a>
       </div>
       
       <div class="pricing-card">
         <h3>Max</h3>
-        <div class="price">$100<span>/mo</span></div>
+        <div class="price">$100<span>/month</span></div>
         <p class="pricing-desc">Everything. Unlimited.</p>
         <ul class="pricing-features">
-          <li><svg fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M5 13l4 4L19 7"/></svg> Everything in Pro</li>
-          <li><svg fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M5 13l4 4L19 7"/></svg> Telegram + Discord + WhatsApp</li>
-          <li><svg fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M5 13l4 4L19 7"/></svg> Stripe + Lemon Squeezy</li>
-          <li><svg fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M5 13l4 4L19 7"/></svg> 100GB storage</li>
-          <li><svg fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M5 13l4 4L19 7"/></svg> Slack integration</li>
+          <li><svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M5 13l4 4L19 7"/></svg> Everything in Pro</li>
+          <li><svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M5 13l4 4L19 7"/></svg> Telegram + Discord + WhatsApp</li>
+          <li><svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M5 13l4 4L19 7"/></svg> Stripe + Lemon Squeezy</li>
+          <li><svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M5 13l4 4L19 7"/></svg> 100GB storage</li>
+          <li><svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M5 13l4 4L19 7"/></svg> Slack integration</li>
         </ul>
         <a href="#waitlist" class="btn btn-outline" style="width:100%;justify-content:center;">Join Waitlist</a>
       </div>
@@ -914,7 +799,7 @@
     
     <div class="faq-item">
       <h3>Can it really code and use GitHub?</h3>
-      <p>Yes. Kobrain connects to GitHub, Vercel, Supabase, and other developer tools. It can write code, review pull requests, push commits, and manage deployments. Like a developer teammate who has access to your entire stack.</p>
+      <p>Yes. Kobrain connects to GitHub, Vercel, Supabase, and other developer tools. It can write code, review pull requests, push commits, and manage deployments. It works like a developer teammate who has access to your entire stack.</p>
     </div>
     
     <div class="faq-item">
@@ -937,12 +822,12 @@
   <section class="cta">
     <h2>Your Teammate is Waiting</h2>
     <p>Stop doing work that a teammate could do. Join the waitlist and be first to know when Kobrain launches.</p>
-    <a href="#waitlist" class="btn">Join the Waitlist →</a>
+    <a href="#waitlist" class="btn">Join the Waitlist</a>
   </section>
 
   <!-- FOOTER -->
   <footer>
-    <p>© 2026 Kobrain — Your AI Teammate. Built by <a href="https://github.com/jccollinsdev" style="color:var(--teal);text-decoration:none;">Josiah Collins</a> & <a href="https://github.com/sansarkarki" style="color:var(--teal);text-decoration:none;">Sansar Karki</a></p>
+    <p>© 2026 Kobrain — Your AI Teammate. Built by <a href="https://github.com/jccollinsdev" style="color:var(--primary);text-decoration:none;">Josiah Collins</a> & <a href="https://github.com/sansarkarki" style="color:var(--primary);text-decoration:none;">Sansar Karki</a></p>
   </footer>
 
   <script>
@@ -950,7 +835,7 @@
       e.preventDefault();
       const email = e.target.querySelector('input[type="email"]').value;
       const useCase = e.target.parentElement.querySelector('textarea').value;
-      alert('Thanks! ' + email + ' is on the waitlist. We\'ll be in touch soon.');
+      alert('Thanks! ' + email + ' is on the waitlist.');
       // TODO: Connect to backend
     }
   </script>
