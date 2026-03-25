@@ -10,14 +10,14 @@
     * { margin: 0; padding: 0; box-sizing: border-box; }
     
     :root {
-      --navy: #0A1628;
-      --navy-light: #111D35;
-      --teal: #14B8A6;
-      --teal-dark: #0D9488;
-      --bg: #0A1628;
-      --bg-card: #111D35;
-      --text: #F1F5F9;
-      --text-light: #94A3B8;
+      --primary: #4F46E5;
+      --primary-dark: #3730A3;
+      --accent: #F97316;
+      --accent-dark: #EA580C;
+      --bg: #FAFAFA;
+      --bg-dark: #F1F5F9;
+      --text: #1E293B;
+      --text-light: #64748B;
       --white: #FFFFFF;
     }
     
@@ -61,17 +61,17 @@
     
     .nav-links a {
       text-decoration: none;
-      color: var(--text-light);
+      color: var(--text);
       font-weight: 500;
       font-size: 0.95rem;
       transition: color 0.2s;
     }
     
-    .nav-links a:hover { color: var(--teal); }
+    .nav-links a:hover { color: var(--white); }
     
     .btn {
-      background: var(--teal);
-      color: var(--navy);
+      background: var(--primary);
+      color: var(--text);
       padding: 0.75rem 1.5rem;
       border-radius: 6px;
       text-decoration: none;
@@ -86,23 +86,23 @@
     }
     
     .btn:hover {
-      background: var(--teal-dark);
+      background: var(--primary-dark);
       transform: translateY(-1px);
     }
     
     .btn-accent {
-      background: var(--teal);
+      background: var(--primary);
     }
     
     .btn-outline {
       background: transparent;
       border: 2px solid var(--teal);
-      color: var(--teal);
+      color: var(--white);
     }
     
     .btn-outline:hover {
-      background: var(--teal);
-      color: var(--navy);
+      background: var(--primary);
+      color: var(--text);
     }
     
     /* HERO */
@@ -122,12 +122,12 @@
     }
     
     .hero h1 span {
-      color: var(--teal);
+      color: var(--white);
     }
     
     .hero-sub {
       font-size: 1.2rem;
-      color: var(--text-light);
+      color: var(--text);
       max-width: 720px;
       margin: 0 auto 2.5rem;
       line-height: 1.8;
@@ -143,28 +143,28 @@
     
     .waitlist-form input {
       padding: 0.875rem 1.25rem;
-      border: 2px solid #1E293B;
+      border: 2px solid #E2E8F0;
       border-radius: 6px;
       font-size: 1rem;
       width: 280px;
       font-family: inherit;
-      background: var(--navy-light);
+      background: var(--primary-dark);
       color: var(--white);
       transition: border-color 0.2s;
     }
     
     .waitlist-form input:focus {
       outline: none;
-      border-color: var(--teal);
+      border-color: var(--white);
     }
     
     .waitlist-form input::placeholder {
-      color: var(--text-light);
+      color: var(--text);
     }
     
     .waitlist-question {
       font-size: 0.9rem;
-      color: var(--text-light);
+      color: var(--text);
       margin-top: 1rem;
     }
     
@@ -172,24 +172,24 @@
       width: 100%;
       max-width: 500px;
       padding: 0.75rem;
-      border: 2px solid #1E293B;
+      border: 2px solid #E2E8F0;
       border-radius: 6px;
       font-family: inherit;
       font-size: 0.9rem;
       resize: none;
       margin-top: 0.5rem;
-      background: var(--navy-light);
+      background: var(--primary-dark);
       color: var(--white);
     }
     
     .waitlist-question textarea::placeholder {
-      color: var(--text-light);
+      color: var(--text);
     }
     
     /* INTEGRATIONS CAROUSEL */
     .integrations {
       padding: 4rem 0;
-      background: var(--bg-card);
+      background: var(--bg-dark);
       overflow: hidden;
     }
     
@@ -197,7 +197,7 @@
       text-align: center;
       font-size: 0.85rem;
       font-weight: 600;
-      color: var(--text-light);
+      color: var(--text);
       text-transform: uppercase;
       letter-spacing: 0.1em;
       margin-bottom: 2.5rem;
@@ -223,9 +223,9 @@
       gap: 0.75rem;
       font-weight: 600;
       font-size: 1.2rem;
-      color: var(--text-light);
+      color: var(--text);
       white-space: nowrap;
-      opacity: 0.65;
+      opacity: 0.8;
       transition: opacity 0.2s;
     }
     
@@ -254,7 +254,7 @@
     
     .section-sub {
       text-align: center;
-      color: var(--text-light);
+      color: var(--text);
       font-size: 1.1rem;
       max-width: 600px;
       margin: 0 auto 3.5rem;
@@ -267,24 +267,24 @@
     }
     
     .feature-card {
-      background: var(--bg-card);
-      border-radius: 4px;
+      background: var(--white);
+      border-radius: 16px;
       padding: 2rem;
-      border: 1px solid #1E293B;
+      border: 1px solid #E2E8F0;
       transition: all 0.3s;
     }
     
     .feature-card:hover {
-      border-color: var(--teal);
-      box-shadow: 0 0 40px rgba(20, 184, 166, 0.08);
+      border-color: var(--white);
+      box-shadow: 0 20px 40px rgba(79, 70, 229, 0.1);
       transform: translateY(-4px);
     }
     
     .feature-icon {
       width: 48px;
       height: 48px;
-      background: var(--teal);
-      border-radius: 4px;
+      background: var(--primary);
+      border-radius: 16px;
       display: flex;
       align-items: center;
       justify-content: center;
@@ -294,7 +294,7 @@
     .feature-icon svg {
       width: 24px;
       height: 24px;
-      color: var(--navy);
+      color: var(--text);
     }
     
     .feature-card h3 {
@@ -305,7 +305,7 @@
     }
     
     .feature-card p {
-      color: var(--text-light);
+      color: var(--text);
       font-size: 0.9rem;
       line-height: 1.7;
     }
@@ -313,7 +313,7 @@
     /* HOW IT WORKS */
     .how-it-works {
       padding: 5rem 5%;
-      background: var(--bg-card);
+      background: var(--bg-dark);
     }
     
     .steps {
@@ -332,9 +332,9 @@
     .step-num {
       width: 60px;
       height: 60px;
-      background: var(--teal);
-      color: var(--navy);
-      border-radius: 4px;
+      background: var(--primary);
+      color: var(--text);
+      border-radius: 16px;
       display: flex;
       align-items: center;
       justify-content: center;
@@ -351,7 +351,7 @@
     }
     
     .step p {
-      color: var(--text-light);
+      color: var(--text);
       font-size: 0.95rem;
       line-height: 1.7;
     }
@@ -370,9 +370,8 @@
     }
     
     .use-case {
-      background: var(--bg-card);
-      border: 1px solid #1E293B;
-      border-radius: 4px;
+      background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+      color: var(--white);
       padding: 2.5rem;
     }
     
@@ -380,11 +379,11 @@
       font-size: 1.1rem;
       font-weight: 700;
       margin-bottom: 1rem;
-      color: var(--teal);
+      color: var(--white);
     }
     
     .use-case p {
-      color: var(--text-light);
+      color: rgba(255,255,255,0.9);
       font-size: 0.9rem;
       line-height: 1.7;
     }
@@ -392,7 +391,7 @@
     /* PRICING */
     .pricing {
       padding: 5rem 5%;
-      background: var(--bg-card);
+      background: var(--bg-dark);
     }
     
     .pricing-grid {
@@ -405,23 +404,23 @@
     
     .pricing-card {
       background: var(--bg);
-      border-radius: 4px;
+      border-radius: 16px;
       padding: 2.5rem;
       text-align: center;
-      border: 1px solid #1E293B;
+      border: none;
       transition: all 0.3s;
     }
     
     .pricing-card.popular {
-      border-color: var(--teal);
-      box-shadow: 0 0 40px rgba(20, 184, 166, 0.15);
+      border-color: var(--white);
+      box-shadow: 0 20px 60px rgba(79, 70, 229, 0.2);
     }
     
     .pricing-card h3 {
       font-size: 1.1rem;
       font-weight: 700;
       margin-bottom: 0.5rem;
-      color: var(--text-light);
+      color: var(--text);
       text-transform: uppercase;
       letter-spacing: 0.05em;
     }
@@ -429,18 +428,18 @@
     .price {
       font-size: 3rem;
       font-weight: 800;
-      color: var(--teal);
+      color: var(--white);
       margin-bottom: 0.25rem;
     }
     
     .price span {
       font-size: 1rem;
       font-weight: 500;
-      color: var(--text-light);
+      color: var(--text);
     }
     
     .pricing-desc {
-      color: var(--text-light);
+      color: var(--text);
       font-size: 0.85rem;
       margin-bottom: 1.5rem;
     }
@@ -457,13 +456,13 @@
       gap: 0.75rem;
       padding: 0.5rem 0;
       font-size: 0.875rem;
-      color: var(--text-light);
+      color: var(--text);
     }
     
     .pricing-features li svg {
       width: 16px;
       height: 16px;
-      color: var(--teal);
+      color: var(--white);
       flex-shrink: 0;
     }
     
@@ -475,12 +474,12 @@
     }
     
     .faq-item {
-      border-bottom: 1px solid #1E293B;
+      border-bottom: 1px solid #E2E8F0;
       padding: 1.5rem 0;
     }
     
     .faq-item:first-of-type {
-      border-top: 1px solid #1E293B;
+      border-top: 1px solid #E2E8F0;
     }
     
     .faq-item h3 {
@@ -491,7 +490,7 @@
     }
     
     .faq-item p {
-      color: var(--text-light);
+      color: var(--text);
       font-size: 0.9rem;
       line-height: 1.7;
     }
@@ -499,20 +498,20 @@
     /* CTA */
     .cta {
       padding: 5rem 5%;
-      background: var(--teal);
+      background: linear-gradient(135deg, var(--primary), var(--primary-dark));
       text-align: center;
-      color: var(--navy);
+      color: var(--white);
     }
     
     .cta h2 {
       font-size: 2.5rem;
       font-weight: 800;
       margin-bottom: 1rem;
-      color: var(--navy);
+      color: var(--text);
     }
     
     .cta p {
-      opacity: 0.85;
+      opacity: 0.9;
       font-size: 1.1rem;
       margin-bottom: 2rem;
       max-width: 500px;
@@ -521,21 +520,21 @@
     }
     
     .cta .btn {
-      background: var(--navy);
+      background: var(--primary);
       color: var(--white);
       font-size: 1.1rem;
       padding: 1rem 2rem;
     }
     
     .cta .btn:hover {
-      background: var(--navy-light);
+      background: var(--primary-dark);
     }
     
     /* FOOTER */
     footer {
       padding: 2rem 5%;
       text-align: center;
-      color: var(--text-light);
+      color: var(--text);
       font-size: 0.85rem;
       background: var(--bg);
     }
@@ -555,12 +554,12 @@
   <nav>
     <div class="logo">
       <svg class="logo-icon" viewBox="0 0 40 40" fill="none">
-        <circle cx="20" cy="20" r="18" fill="#14B8A6"/>
-        <circle cx="20" cy="14" r="5" fill="#0A1628"/>
-        <circle cx="12" cy="26" r="4" fill="#0A1628" opacity="0.8"/>
-        <circle cx="28" cy="26" r="4" fill="#0A1628" opacity="0.8"/>
-        <path d="M20 19V24M17 24L20 26L23 24" stroke="#0A1628" stroke-width="1.5" stroke-linecap="round"/>
-        <path d="M12 22L17 17M28 22L23 17" stroke="#0A1628" stroke-width="1.5" stroke-linecap="round" opacity="0.6"/>
+        <circle cx="20" cy="20" r="18" fill="#4F46E5"/>
+        <circle cx="20" cy="14" r="5" fill="white"/>
+        <circle cx="12" cy="26" r="4" fill="white" opacity="0.8"/>
+        <circle cx="28" cy="26" r="4" fill="white" opacity="0.8"/>
+        <path d="M20 19V24M17 24L20 26L23 24" stroke="white" stroke-width="1.5" stroke-linecap="round"/>
+        <path d="M12 22L17 17M28 22L23 17" stroke="white" stroke-width="1.5" stroke-linecap="round" opacity="0.6"/>
       </svg>
       Kobrain
     </div>
