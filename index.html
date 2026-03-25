@@ -1,0 +1,844 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Kobrain — Your AI Teammate</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    
+    :root {
+      --primary: #4F46E5;
+      --primary-dark: #3730A3;
+      --accent: #F97316;
+      --bg: #FAFAFA;
+      --bg-dark: #F1F5F9;
+      --text: #1E293B;
+      --text-light: #64748B;
+      --white: #FFFFFF;
+    }
+    
+    body {
+      font-family: 'Inter', -apple-system, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+    
+    /* NAV */
+    nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1.25rem 5%;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      font-weight: 800;
+      font-size: 1.5rem;
+      color: var(--primary);
+    }
+    
+    .logo-icon {
+      width: 40px;
+      height: 40px;
+    }
+    
+    .nav-links {
+      display: flex;
+      gap: 2rem;
+      align-items: center;
+    }
+    
+    .nav-links a {
+      text-decoration: none;
+      color: var(--text-light);
+      font-weight: 500;
+      font-size: 0.95rem;
+      transition: color 0.2s;
+    }
+    
+    .nav-links a:hover { color: var(--primary); }
+    
+    .btn {
+      background: var(--primary);
+      color: var(--white);
+      padding: 0.75rem 1.5rem;
+      border-radius: 8px;
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 0.95rem;
+      transition: all 0.2s;
+      border: none;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    
+    .btn:hover {
+      background: var(--primary-dark);
+      transform: translateY(-1px);
+    }
+    
+    .btn-accent {
+      background: var(--accent);
+    }
+    
+    .btn-accent:hover {
+      background: #EA580C;
+    }
+    
+    .btn-outline {
+      background: transparent;
+      border: 2px solid var(--primary);
+      color: var(--primary);
+    }
+    
+    .btn-outline:hover {
+      background: var(--primary);
+      color: var(--white);
+    }
+    
+    /* HERO */
+    .hero {
+      text-align: center;
+      padding: 5rem 5% 4rem;
+      max-width: 900px;
+      margin: 0 auto;
+    }
+    
+    .hero h1 {
+      font-size: clamp(2.5rem, 6vw, 4rem);
+      font-weight: 800;
+      line-height: 1.1;
+      margin-bottom: 1.5rem;
+      color: var(--text);
+    }
+    
+    .hero h1 span {
+      color: var(--primary);
+    }
+    
+    .hero-sub {
+      font-size: 1.25rem;
+      color: var(--text-light);
+      max-width: 680px;
+      margin: 0 auto 2.5rem;
+      line-height: 1.7;
+    }
+    
+    .waitlist-form {
+      display: flex;
+      gap: 0.75rem;
+      justify-content: center;
+      flex-wrap: wrap;
+      margin-bottom: 1rem;
+    }
+    
+    .waitlist-form input {
+      padding: 0.875rem 1.25rem;
+      border: 2px solid #E2E8F0;
+      border-radius: 8px;
+      font-size: 1rem;
+      width: 280px;
+      font-family: inherit;
+      transition: border-color 0.2s;
+    }
+    
+    .waitlist-form input:focus {
+      outline: none;
+      border-color: var(--primary);
+    }
+    
+    .waitlist-question {
+      font-size: 0.9rem;
+      color: var(--text-light);
+      margin-top: 1rem;
+    }
+    
+    .waitlist-question textarea {
+      width: 100%;
+      max-width: 500px;
+      padding: 0.75rem;
+      border: 2px solid #E2E8F0;
+      border-radius: 8px;
+      font-family: inherit;
+      font-size: 0.9rem;
+      resize: none;
+      margin-top: 0.5rem;
+    }
+    
+    /* INTEGRATIONS CAROUSEL */
+    .integrations {
+      padding: 4rem 0;
+      background: var(--white);
+      overflow: hidden;
+    }
+    
+    .integrations-label {
+      text-align: center;
+      font-size: 0.9rem;
+      font-weight: 600;
+      color: var(--text-light);
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      margin-bottom: 2rem;
+    }
+    
+    .carousel {
+      display: flex;
+      gap: 3rem;
+      animation: scroll 30s linear infinite;
+      width: max-content;
+    }
+    
+    .carousel:hover { animation-play-state: paused; }
+    
+    @keyframes scroll {
+      0% { transform: translateX(0); }
+      100% { transform: translateX(-50%); }
+    }
+    
+    .carousel-item {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      font-weight: 600;
+      font-size: 1.25rem;
+      color: var(--text-light);
+      white-space: nowrap;
+      opacity: 0.7;
+      transition: opacity 0.2s;
+    }
+    
+    .carousel-item:hover { opacity: 1; }
+    
+    .carousel-item svg {
+      width: 32px;
+      height: 32px;
+    }
+    
+    /* FEATURES */
+    .features {
+      padding: 5rem 5%;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    
+    .section-title {
+      text-align: center;
+      font-size: 2.25rem;
+      font-weight: 700;
+      margin-bottom: 1rem;
+    }
+    
+    .section-sub {
+      text-align: center;
+      color: var(--text-light);
+      font-size: 1.1rem;
+      max-width: 600px;
+      margin: 0 auto 3.5rem;
+    }
+    
+    .feature-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2rem;
+    }
+    
+    .feature-card {
+      background: var(--white);
+      border-radius: 16px;
+      padding: 2rem;
+      border: 1px solid #E2E8F0;
+      transition: all 0.3s;
+    }
+    
+    .feature-card:hover {
+      border-color: var(--primary);
+      box-shadow: 0 20px 40px rgba(79, 70, 229, 0.1);
+      transform: translateY(-4px);
+    }
+    
+    .feature-icon {
+      width: 56px;
+      height: 56px;
+      background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 1.25rem;
+    }
+    
+    .feature-icon svg {
+      width: 28px;
+      height: 28px;
+      color: var(--white);
+    }
+    
+    .feature-card h3 {
+      font-size: 1.25rem;
+      font-weight: 700;
+      margin-bottom: 0.75rem;
+    }
+    
+    .feature-card p {
+      color: var(--text-light);
+      font-size: 0.95rem;
+      line-height: 1.7;
+    }
+    
+    /* HOW IT WORKS */
+    .how-it-works {
+      padding: 5rem 5%;
+      background: var(--white);
+    }
+    
+    .steps {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 3rem;
+      max-width: 1000px;
+      margin: 0 auto;
+    }
+    
+    .step {
+      text-align: center;
+      position: relative;
+    }
+    
+    .step-num {
+      width: 64px;
+      height: 64px;
+      background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+      color: var(--white);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.5rem;
+      font-weight: 800;
+      margin: 0 auto 1.5rem;
+    }
+    
+    .step h3 {
+      font-size: 1.25rem;
+      font-weight: 700;
+      margin-bottom: 0.75rem;
+    }
+    
+    .step p {
+      color: var(--text-light);
+      font-size: 0.95rem;
+      line-height: 1.7;
+    }
+    
+    /* USE CASES */
+    .use-cases {
+      padding: 5rem 5%;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    
+    .use-case-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 2rem;
+    }
+    
+    .use-case {
+      background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+      color: var(--white);
+      border-radius: 20px;
+      padding: 2.5rem;
+    }
+    
+    .use-case h3 {
+      font-size: 1.25rem;
+      font-weight: 700;
+      margin-bottom: 1rem;
+    }
+    
+    .use-case p {
+      opacity: 0.9;
+      font-size: 0.95rem;
+      line-height: 1.7;
+    }
+    
+    /* PRICING */
+    .pricing {
+      padding: 5rem 5%;
+      background: var(--bg-dark);
+    }
+    
+    .pricing-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 2rem;
+      max-width: 1000px;
+      margin: 0 auto;
+    }
+    
+    .pricing-card {
+      background: var(--white);
+      border-radius: 20px;
+      padding: 2.5rem;
+      text-align: center;
+      border: 2px solid transparent;
+      transition: all 0.3s;
+    }
+    
+    .pricing-card.popular {
+      border-color: var(--primary);
+      transform: scale(1.03);
+      box-shadow: 0 20px 60px rgba(79, 70, 229, 0.2);
+    }
+    
+    .pricing-card h3 {
+      font-size: 1.25rem;
+      font-weight: 700;
+      margin-bottom: 0.5rem;
+    }
+    
+    .price {
+      font-size: 3rem;
+      font-weight: 800;
+      color: var(--primary);
+      margin-bottom: 0.5rem;
+    }
+    
+    .price span {
+      font-size: 1rem;
+      font-weight: 500;
+      color: var(--text-light);
+    }
+    
+    .pricing-desc {
+      color: var(--text-light);
+      font-size: 0.9rem;
+      margin-bottom: 1.5rem;
+    }
+    
+    .pricing-features {
+      text-align: left;
+      margin-bottom: 2rem;
+    }
+    
+    .pricing-features li {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      padding: 0.5rem 0;
+      font-size: 0.9rem;
+      color: var(--text);
+    }
+    
+    .pricing-features li svg {
+      width: 20px;
+      height: 20px;
+      color: var(--primary);
+      flex-shrink: 0;
+    }
+    
+    /* FAQ */
+    .faq {
+      padding: 5rem 5%;
+      max-width: 800px;
+      margin: 0 auto;
+    }
+    
+    .faq-item {
+      border-bottom: 1px solid #E2E8F0;
+      padding: 1.5rem 0;
+    }
+    
+    .faq-item h3 {
+      font-size: 1.1rem;
+      font-weight: 600;
+      margin-bottom: 0.75rem;
+    }
+    
+    .faq-item p {
+      color: var(--text-light);
+      font-size: 0.95rem;
+      line-height: 1.7;
+    }
+    
+    /* CTA */
+    .cta {
+      padding: 5rem 5%;
+      background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+      text-align: center;
+      color: var(--white);
+    }
+    
+    .cta h2 {
+      font-size: 2.5rem;
+      font-weight: 800;
+      margin-bottom: 1rem;
+    }
+    
+    .cta p {
+      opacity: 0.9;
+      font-size: 1.1rem;
+      margin-bottom: 2rem;
+      max-width: 500px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    
+    .cta .btn {
+      background: var(--white);
+      color: var(--primary);
+      font-size: 1.1rem;
+      padding: 1rem 2rem;
+    }
+    
+    .cta .btn:hover {
+      background: var(--bg);
+    }
+    
+    /* FOOTER */
+    footer {
+      padding: 2rem 5%;
+      text-align: center;
+      color: var(--text-light);
+      font-size: 0.9rem;
+    }
+    
+    /* RESPONSIVE */
+    @media (max-width: 768px) {
+      .nav-links { display: none; }
+      .hero { padding: 3rem 5% 2rem; }
+      .section-title { font-size: 1.75rem; }
+      .pricing-card.popular { transform: none; }
+      .waitlist-form input { width: 100%; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <div class="logo">
+      <svg class="logo-icon" viewBox="0 0 40 40" fill="none">
+        <circle cx="20" cy="20" r="18" fill="#4F46E5"/>
+        <circle cx="20" cy="14" r="5" fill="white"/>
+        <circle cx="12" cy="26" r="4" fill="white" opacity="0.8"/>
+        <circle cx="28" cy="26" r="4" fill="white" opacity="0.8"/>
+        <path d="M20 19V24M17 24L20 26L23 24" stroke="white" stroke-width="1.5" stroke-linecap="round"/>
+        <path d="M12 22L17 17M28 22L23 17" stroke="white" stroke-width="1.5" stroke-linecap="round" opacity="0.6"/>
+      </svg>
+      Kobrain
+    </div>
+    <div class="nav-links">
+      <a href="#features">Features</a>
+      <a href="#how-it-works">How It Works</a>
+      <a href="#pricing">Pricing</a>
+      <a href="#faq">FAQ</a>
+      <a href="#waitlist" class="btn btn-accent">Join Waitlist</a>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero" id="waitlist">
+    <h1>Your AI Teammate.<br><span>Has an Inbox. Does the Work.</span></h1>
+    <p class="hero-sub">
+      Kobrain is an AI teammate with its own email address. You delegate tasks by sending an email. It codes, manages your files, and handles the work — while you sleep. It's not an assistant. It's a teammate on your team.
+    </p>
+    <form class="waitlist-form" onsubmit="handleSubmit(event)">
+      <input type="email" placeholder="your@email.com" required>
+      <button type="submit" class="btn btn-accent">Join Waitlist</button>
+    </form>
+    <p class="waitlist-question">What would you want your teammate to do? (optional)</p>
+    <textarea rows="3" placeholder="Example: Handle my customer emails, manage my calendar, update my Notion pages..."></textarea>
+  </section>
+
+  <!-- INTEGRATIONS CAROUSEL -->
+  <section class="integrations">
+    <p class="integrations-label">Works with your tools</p>
+    <div class="carousel">
+      <div class="carousel-item">
+        <svg viewBox="0 0 24 24" fill="#EA4335"><path d="M1 1h10v10H1V1zm11 11h10v10H12V12zM1 13h10v10H1V13z"/></svg>
+        Gmail
+      </div>
+      <div class="carousel-item">
+        <svg viewBox="0 0 24 24" fill="#4285F4"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg>
+        Google Calendar
+      </div>
+      <div class="carousel-item">
+        <svg viewBox="0 0 24 24" fill="#FF9900"><path d="M4 4h16v16H4V4zm2 2v12h12V6H6zm2 2h8v2H8V8zm0 4h8v2H8v-2z"/></svg>
+        Google Sheets
+      </div>
+      <div class="carousel-item">
+        <svg viewBox="0 0 24 24" fill="#4F46E5"><path d="M4 4h16v16H4V4zm2 2v12h12V6H6zm2 2h8v2H8V8zm0 4h5v2H8v-2zm0 4h8v2H8v-2z"/></svg>
+        Notion
+      </div>
+      <div class="carousel-item">
+        <svg viewBox="0 0 24 24" fill="#30A3DC"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
+        Google Drive
+      </div>
+      <div class="carousel-item">
+        <svg viewBox="0 0 24 24" fill="#333"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
+        GitHub
+      </div>
+      <div class="carousel-item">
+        <svg viewBox="0 0 24 24" fill="#333"><path d="M12 0L1.5 9.5l10.5 9.5L23 9.5 12 0zm0 4l6.5 6L12 18l-6.5-6.5L12 4z"/></svg>
+        Vercel
+      </div>
+      <div class="carousel-item">
+        <svg viewBox="0 0 24 24" fill="#4F46E5"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
+        Supabase
+      </div>
+      <div class="carousel-item">
+        <svg viewBox="0 0 24 24" fill="#646B7B"><path d="M4.5 4h15A1.5 1.5 0 0121 5.5v13a1.5 1.5 0 01-1.5 1.5h-15A1.5 1.5 0 013 18.5v-13A1.5 1.5 0 014.5 4zM7 8h10v2H7V8zm0 4h7v2H7v-2z"/></svg>
+        Stripe
+      </div>
+      <div class="carousel-item">
+        <svg viewBox="0 0 24 24" fill="#000"><circle cx="12" cy="12" r="10" fill="none" stroke="#000" stroke-width="2"/><path d="M8 12h8M12 8v8" stroke="#000" stroke-width="2"/></svg>
+        Telegram
+      </div>
+      <!-- Duplicate for seamless loop -->
+      <div class="carousel-item">
+        <svg viewBox="0 0 24 24" fill="#EA4335"><path d="M1 1h10v10H1V1zm11 11h10v10H12V12zM1 13h10v10H1V13z"/></svg>
+        Gmail
+      </div>
+      <div class="carousel-item">
+        <svg viewBox="0 0 24 24" fill="#4285F4"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg>
+        Google Calendar
+      </div>
+      <div class="carousel-item">
+        <svg viewBox="0 0 24 24" fill="#FF9900"><path d="M4 4h16v16H4V4zm2 2v12h12V6H6zm2 2h8v2H8V8zm0 4h8v2H8v-2z"/></svg>
+        Google Sheets
+      </div>
+      <div class="carousel-item">
+        <svg viewBox="0 0 24 24" fill="#4F46E5"><path d="M4 4h16v16H4V4zm2 2v12h12V6H6zm2 2h8v2H8V8zm0 4h5v2H8v-2zm0 4h8v2H8v-2z"/></svg>
+        Notion
+      </div>
+      <div class="carousel-item">
+        <svg viewBox="0 0 24 24" fill="#30A3DC"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
+        Google Drive
+      </div>
+      <div class="carousel-item">
+        <svg viewBox="0 0 24 24" fill="#333"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
+        GitHub
+      </div>
+    </div>
+  </section>
+
+  <!-- FEATURES -->
+  <section class="features" id="features">
+    <h2 class="section-title">Your Teammate. In Your Workflow.</h2>
+    <p class="section-sub">Kobrain slots into how you already work — email, code, files, calendar. No new app to learn. Just a teammate who lives in your existing tools.</p>
+    
+    <div class="feature-grid">
+      <div class="feature-card">
+        <div class="feature-icon">
+          <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
+        </div>
+        <h3>Its Own Email Inbox</h3>
+        <p>Every Kobrain has a real email address — kobrain@yourdomain.com. You CC them on tasks. They read emails, extract action items, and get to work. No app to open. Just email.</p>
+      </div>
+      
+      <div class="feature-card">
+        <div class="feature-icon">
+          <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"/></svg>
+        </div>
+        <h3>Codes & Uses Developer Tools</h3>
+        <p>Kobrain connects to GitHub, Vercel, Supabase, and more. It can write code, push commits, review PRs, manage deployments — like a developer teammate who never sleeps.</p>
+      </div>
+      
+      <div class="feature-card">
+        <div class="feature-icon">
+          <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M4 4h16v16H4V4zm2 4v12h12V8H6z"/></svg>
+        </div>
+        <h3>Manages Your Files & Docs</h3>
+        <p>Connects to Google Drive, Notion, Obsidian, and more. Reads your documents, updates your files, keeps your knowledge base current — without you lifting a finger.</p>
+      </div>
+      
+      <div class="feature-card">
+        <div class="feature-icon">
+          <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/></svg>
+        </div>
+        <h3>Runs Your Calendar</h3>
+        <p>Schedules meetings, sends invites, manages your calendar. Kobrain coordinates your time so you can focus on work that actually matters.</p>
+      </div>
+      
+      <div class="feature-card">
+        <div class="feature-icon">
+          <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"/></svg>
+        </div>
+        <h3>Remembers Everything</h3>
+        <p>Kobrain has a persistent memory of your preferences, your projects, your team. It learns how you work and gets better over time. Like a teammate who's been there from day one.</p>
+      </div>
+      
+      <div class="feature-card">
+        <div class="feature-icon">
+          <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
+        </div>
+        <h3>Works While You Sleep</h3>
+        <p>You delegate at 11pm. You wake up to completed tasks. Kobrain runs on your schedule — night shifts, weekends, whenever you need. You don't wait on your teammate.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- HOW IT WORKS -->
+  <section class="how-it-works" id="how-it-works">
+    <h2 class="section-title">How Kobrain Works</h2>
+    <p class="section-sub">Three steps to having a teammate who works as hard as you do.</p>
+    
+    <div class="steps">
+      <div class="step">
+        <div class="step-num">1</div>
+        <h3>Create Your Kobrain</h3>
+        <p>Give it a name, an email address, and define its role. What does it do? What's off-limits? You set the rules. Kobrain learns from how you want to work.</p>
+      </div>
+      
+      <div class="step">
+        <div class="step-num">2</div>
+        <h3>Delegate by Email</h3>
+        <p>Send an email to your Kobrain. CC them on tasks. Loop them into threads. They'll read it, understand what you need, and get to work — using your actual tools.</p>
+      </div>
+      
+      <div class="step">
+        <div class="step-num">3</div>
+        <h3>Wake Up to Done Work</h3>
+        <p>Your Kobrain works through tasks, sends updates, and completes what you assigned. You review, redirect, and focus on the work only a human can do.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- USE CASES -->
+  <section class="use-cases">
+    <div class="use-case-grid">
+      <div class="use-case">
+        <h3>For Founders & Builders</h3>
+        <p>Stop drowning in customer emails, Slack messages, and follow-ups. Kobrain handles the administrative overhead so you ship product and talk to customers.</p>
+      </div>
+      
+      <div class="use-case">
+        <h3>For Developers</h3>
+        <p>Your AI teammate reviews PRs, manages repos, updates docs, and handles the GitHub busywork. You focus on architecture and code that matters.</p>
+      </div>
+      
+      <div class="use-case">
+        <h3>For Busy Professionals</h3>
+        <p>Email triage, calendar management, meeting prep — the work that eats your day. Kobrain handles the repetitive so you do the meaningful.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- PRICING -->
+  <section class="pricing" id="pricing">
+    <h2 class="section-title">Simple Pricing</h2>
+    <p class="section-sub">Start free. Scale as you go. No surprises.</p>
+    
+    <div class="pricing-grid">
+      <div class="pricing-card">
+        <h3>Starter</h3>
+        <div class="price">$20<span>/month</span></div>
+        <p class="pricing-desc">One AI teammate. Core integrations.</p>
+        <ul class="pricing-features">
+          <li><svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M5 13l4 4L19 7"/></svg> 1 Kobrain teammate</li>
+          <li><svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M5 13l4 4L19 7"/></svg> Email inbox</li>
+          <li><svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M5 13l4 4L19 7"/></svg> Gmail + Notion + Calendar</li>
+          <li><svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M5 13l4 4L19 7"/></svg> 10GB storage</li>
+          <li><svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M5 13l4 4L19 7"/></svg> Email support</li>
+        </ul>
+        <a href="#waitlist" class="btn btn-outline" style="width:100%;justify-content:center;">Join Waitlist</a>
+      </div>
+      
+      <div class="pricing-card popular">
+        <h3>Pro</h3>
+        <div class="price">$50<span>/month</span></div>
+        <p class="pricing-desc">All integrations. More power.</p>
+        <ul class="pricing-features">
+          <li><svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M5 13l4 4L19 7"/></svg> Everything in Starter</li>
+          <li><svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M5 13l4 4L19 7"/></svg> GitHub + Vercel + Supabase</li>
+          <li><svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M5 13l4 4L19 7"/></svg> Drive + Sheets + Docs</li>
+          <li><svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M5 13l4 4L19 7"/></svg> 50GB storage</li>
+          <li><svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M5 13l4 4L19 7"/></svg> Priority support</li>
+        </ul>
+        <a href="#waitlist" class="btn btn-accent" style="width:100%;justify-content:center;">Join Waitlist</a>
+      </div>
+      
+      <div class="pricing-card">
+        <h3>Max</h3>
+        <div class="price">$100<span>/month</span></div>
+        <p class="pricing-desc">Everything. Unlimited.</p>
+        <ul class="pricing-features">
+          <li><svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M5 13l4 4L19 7"/></svg> Everything in Pro</li>
+          <li><svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M5 13l4 4L19 7"/></svg> Telegram + Discord + WhatsApp</li>
+          <li><svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M5 13l4 4L19 7"/></svg> Stripe + Lemon Squeezy</li>
+          <li><svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M5 13l4 4L19 7"/></svg> 100GB storage</li>
+          <li><svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M5 13l4 4L19 7"/></svg> Slack integration</li>
+        </ul>
+        <a href="#waitlist" class="btn btn-outline" style="width:100%;justify-content:center;">Join Waitlist</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="faq" id="faq">
+    <h2 class="section-title">Questions?</h2>
+    
+    <div class="faq-item">
+      <h3>What makes Kobrain different from ChatGPT or Claude?</h3>
+      <p>Those are chatbots. Kobrain is a teammate — with its own email, its own memory, and access to your real tools. You delegate work via email. It does the work and emails you back. It's persistent, remembers everything, and operates in your actual workflow — not a chat window.</p>
+    </div>
+    
+    <div class="faq-item">
+      <h3>Can it really code and use GitHub?</h3>
+      <p>Yes. Kobrain connects to GitHub, Vercel, Supabase, and other developer tools. It can write code, review pull requests, push commits, and manage deployments. It works like a developer teammate who has access to your entire stack.</p>
+    </div>
+    
+    <div class="faq-item">
+      <h3>What if it makes a mistake?</h3>
+      <p>Kobrain sends you updates before taking big actions. You set the boundaries — what it can do autonomously and what needs your approval. Like any teammate, you manage by outcomes, not micromanagement.</p>
+    </div>
+    
+    <div class="faq-item">
+      <h3>Is my data secure?</h3>
+      <p>Kobrain operates within the integrations you authorize. It only has access to what you grant it. You can revoke access at any time. Your data is encrypted and we never use it to train models.</p>
+    </div>
+    
+    <div class="faq-item">
+      <h3>When can I get started?</h3>
+      <p>We're currently building. Join the waitlist and we'll notify you when early access opens. Early members get priority onboarding and founding member pricing.</p>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="cta">
+    <h2>Your Teammate is Waiting</h2>
+    <p>Stop doing work that a teammate could do. Join the waitlist and be first to know when Kobrain launches.</p>
+    <a href="#waitlist" class="btn">Join the Waitlist</a>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <p>© 2026 Kobrain. Your AI Teammate.</p>
+  </footer>
+
+  <script>
+    function handleSubmit(e) {
+      e.preventDefault();
+      const email = e.target.querySelector('input[type="email"]').value;
+      const useCase = e.target.parentElement.querySelector('textarea').value;
+      alert('Thanks! ' + email + ' is on the waitlist.');
+      // TODO: Connect to backend
+    }
+  </script>
+
+</body>
+</html>
