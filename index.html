@@ -5,32 +5,30 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Kobrain — Your AI Teammate</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
   <style>
     * { margin: 0; padding: 0; box-sizing: border-box; }
     
     :root {
-      --primary: #1A5F5F;
-      --primary-dark: #134545;
-      --accent: #B85C38;
-      --bg: #F4F2EE;
-      --bg-card: #FFFFFF;
-      --text: #1A1A1A;
-      --text-light: #5C5C5C;
-      --text-muted: #909090;
-      --border: #D8D4CE;
-      --border-dark: #BEBAB4;
+      --navy: #0A1628;
+      --navy-light: #152042;
+      --teal: #14B8A6;
+      --teal-dark: #0D9488;
+      --bg: #FAFBFC;
       --white: #FFFFFF;
+      --text: #0A1628;
+      --text-muted: #64748B;
+      --border: #E2E8F0;
+      --border-dark: #CBD5E1;
     }
     
     html { scroll-behavior: smooth; }
     
     body {
-      font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
       background: var(--bg);
       color: var(--text);
-      line-height: 1.6;
-      overflow-x: hidden;
+      line-height: 1.5;
       font-size: 16px;
       -webkit-font-smoothing: antialiased;
     }
@@ -39,852 +37,790 @@
     ul { list-style: none; }
     img { max-width: 100%; display: block; }
     
-    /* NAV */
-    nav {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 20px 5%;
+    /* Container - 12 col grid */
+    .container {
       max-width: 1200px;
       margin: 0 auto;
+      padding: 0 24px;
+    }
+    
+    /* Header */
+    header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 100;
+      background: rgba(250, 251, 252, 0.95);
+      border-bottom: 1px solid var(--border);
+      backdrop-filter: blur(8px);
+    }
+    
+    header .container {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 64px;
     }
     
     .logo {
       display: flex;
       align-items: center;
-      gap: 12px;
+      gap: 10px;
       font-weight: 700;
-      font-size: 1.25rem;
-      color: var(--text);
-      letter-spacing: -0.01em;
+      font-size: 18px;
+      letter-spacing: -0.3px;
     }
     
-    .logo-icon { width: 32px; height: 32px; }
+    .logo svg {
+      width: 32px;
+      height: 32px;
+    }
     
-    .nav-links {
+    nav {
       display: flex;
-      gap: 32px;
       align-items: center;
+      gap: 32px;
     }
     
-    .nav-links a {
-      text-decoration: none;
-      color: var(--text-light);
+    nav a {
+      font-size: 14px;
       font-weight: 500;
-      font-size: 0.875rem;
-      letter-spacing: 0.01em;
+      color: var(--text-muted);
       transition: color 0.15s;
     }
     
-    .nav-links a:hover { color: var(--text); }
+    nav a:hover { color: var(--text); }
     
     .btn {
-      background: var(--primary);
-      color: var(--white);
-      padding: 10px 20px;
-      border-radius: 4px;
-      text-decoration: none;
-      font-weight: 600;
-      font-size: 0.875rem;
-      transition: background 0.15s;
-      border: none;
-      cursor: pointer;
       display: inline-flex;
       align-items: center;
       gap: 8px;
-      letter-spacing: 0.01em;
+      padding: 10px 20px;
+      font-size: 14px;
+      font-weight: 600;
+      border: 1px solid transparent;
+      border-radius: 2px;
+      cursor: pointer;
+      transition: all 0.15s;
     }
     
-    .btn:hover { background: var(--primary-dark); }
+    .btn-primary {
+      background: var(--navy);
+      color: var(--white);
+      border-color: var(--navy);
+    }
     
-    .btn-accent { background: var(--accent); }
-    .btn-accent:hover { background: #9A4D2E; }
+    .btn-primary:hover {
+      background: var(--navy-light);
+      border-color: var(--navy-light);
+    }
     
     .btn-outline {
       background: transparent;
-      border: 2px solid var(--text);
       color: var(--text);
+      border-color: var(--border-dark);
     }
     
     .btn-outline:hover {
-      background: var(--text);
-      color: var(--white);
+      border-color: var(--text);
     }
     
-    /* HERO */
+    /* Hero */
     .hero {
+      padding: 160px 0 100px;
       text-align: center;
-      padding: 80px 5% 64px;
-      max-width: 880px;
-      margin: 0 auto;
     }
     
     .hero h1 {
-      font-size: clamp(2rem, 5vw, 3.25rem);
-      font-weight: 800;
+      font-size: clamp(36px, 5vw, 56px);
+      font-weight: 700;
+      letter-spacing: -1px;
       line-height: 1.1;
-      margin-bottom: 24px;
-      letter-spacing: -0.025em;
-      color: var(--text);
+      margin-bottom: 20px;
     }
     
-    .hero h1 span { color: var(--primary); }
-    
-    .hero-sub {
-      font-size: 1.125rem;
-      color: var(--text-light);
-      max-width: 640px;
-      margin: 0 auto 32px;
-      line-height: 1.7;
+    .hero h1 span {
+      color: var(--teal);
     }
     
-    .waitlist-form {
+    .hero p {
+      font-size: 18px;
+      color: var(--text-muted);
+      max-width: 560px;
+      margin: 0 auto 40px;
+      line-height: 1.6;
+    }
+    
+    .hero-form {
       display: flex;
       gap: 12px;
+      max-width: 480px;
+      margin: 0 auto;
       justify-content: center;
-      flex-wrap: wrap;
-      margin-bottom: 16px;
     }
     
-    .waitlist-form input {
-      padding: 11px 16px;
-      border: 2px solid var(--border);
-      border-radius: 4px;
-      font-size: 1rem;
-      width: 264px;
+    .hero-form input {
+      flex: 1;
+      padding: 12px 16px;
+      border: 1px solid var(--border-dark);
+      border-radius: 2px;
+      font-size: 15px;
       font-family: inherit;
       background: var(--white);
-      color: var(--text);
       transition: border-color 0.15s;
     }
     
-    .waitlist-form input:focus {
+    .hero-form input:focus {
       outline: none;
-      border-color: var(--primary);
+      border-color: var(--teal);
     }
     
-    .waitlist-form input::placeholder { color: var(--text-muted); }
-    
-    .waitlist-question {
-      font-size: 0.875rem;
-      color: var(--text-muted);
-      margin-top: 16px;
-    }
-    
-    .waitlist-question textarea {
-      width: 100%;
-      max-width: 480px;
-      padding: 12px;
-      border: 2px solid var(--border);
-      border-radius: 4px;
+    .hero-form button {
+      padding: 12px 24px;
+      background: var(--navy);
+      color: var(--white);
+      border: none;
+      border-radius: 2px;
+      font-size: 14px;
+      font-weight: 600;
       font-family: inherit;
-      font-size: 0.875rem;
-      resize: none;
-      margin-top: 8px;
-      background: var(--white);
-      color: var(--text);
+      cursor: pointer;
+      transition: background 0.15s;
+      white-space: nowrap;
     }
     
-    .waitlist-question textarea::placeholder { color: var(--text-muted); }
+    .hero-form button:hover {
+      background: var(--navy-light);
+    }
     
-    /* INTEGRATIONS CAROUSEL */
+    /* Integrations Bar */
     .integrations {
       padding: 48px 0;
-      background: var(--bg-card);
+      background: var(--white);
       border-top: 1px solid var(--border);
       border-bottom: 1px solid var(--border);
-      overflow: hidden;
     }
     
-    .integrations-label {
-      text-align: center;
-      font-size: 0.75rem;
+    .integrations p {
+      font-size: 12px;
       font-weight: 600;
+      letter-spacing: 0.5px;
+      text-transform: uppercase;
       color: var(--text-muted);
-      text-transform: uppercase;
-      letter-spacing: 0.1em;
-      margin-bottom: 32px;
-    }
-    
-    .carousel {
-      display: flex;
-      gap: 48px;
-      animation: scroll 30s linear infinite;
-      width: max-content;
-    }
-    
-    .carousel:hover { animation-play-state: paused; }
-    
-    @keyframes scroll {
-      0% { transform: translateX(0); }
-      100% { transform: translateX(-50%); }
-    }
-    
-    .carousel-item {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      font-weight: 600;
-      font-size: 1rem;
-      color: var(--text-light);
-      white-space: nowrap;
-      opacity: 0.65;
-      transition: opacity 0.2s;
-    }
-    
-    .carousel-item:hover { opacity: 1; }
-    
-    .carousel-item svg { width: 28px; height: 28px; }
-    
-    /* FEATURES */
-    .features {
-      padding: 80px 5%;
-      max-width: 1200px;
-      margin: 0 auto;
-    }
-    
-    .section-title {
+      margin-bottom: 24px;
       text-align: center;
-      font-size: 1.75rem;
-      font-weight: 800;
-      margin-bottom: 12px;
-      letter-spacing: -0.02em;
-      color: var(--text);
     }
     
-    .section-sub {
-      text-align: center;
-      color: var(--text-light);
-      font-size: 1rem;
-      max-width: 560px;
-      margin: 0 auto 56px;
-      line-height: 1.65;
-    }
-    
-    .feature-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 24px;
-    }
-    
-    .feature-card {
-      background: var(--bg-card);
-      border-radius: 4px;
-      padding: 28px;
-      border: 1px solid var(--border);
-    }
-    
-    .feature-card:hover {
-      border-color: var(--primary);
-    }
-    
-    .feature-icon {
-      width: 44px;
-      height: 44px;
-      background: var(--bg);
-      border-radius: 4px;
+    .int-grid {
       display: flex;
-      align-items: center;
+      flex-wrap: wrap;
       justify-content: center;
-      margin-bottom: 16px;
-      border: 1px solid var(--border);
+      gap: 32px;
     }
     
-    .feature-icon svg {
-      width: 22px;
-      height: 22px;
-      color: var(--primary);
-    }
-    
-    .feature-card h3 {
-      font-size: 1rem;
-      font-weight: 700;
-      margin-bottom: 8px;
-      letter-spacing: -0.01em;
-      color: var(--text);
-    }
-    
-    .feature-card p {
-      color: var(--text-light);
-      font-size: 0.875rem;
-      line-height: 1.65;
-    }
-    
-    /* HOW IT WORKS */
-    .how-it-works {
-      padding: 80px 5%;
-      background: var(--bg);
-      border-top: 1px solid var(--border);
-    }
-    
-    .steps {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-      gap: 48px;
-      max-width: 960px;
-      margin: 0 auto;
-    }
-    
-    .step { text-align: center; }
-    
-    .step-num {
-      width: 52px;
-      height: 52px;
-      background: var(--primary);
-      color: var(--white);
-      border-radius: 50%;
+    .int-item {
       display: flex;
       align-items: center;
-      justify-content: center;
-      font-size: 1.125rem;
-      font-weight: 800;
-      margin: 0 auto 20px;
-    }
-    
-    .step h3 {
-      font-size: 1rem;
-      font-weight: 700;
-      margin-bottom: 8px;
-      letter-spacing: -0.01em;
-      color: var(--text);
-    }
-    
-    .step p {
-      color: var(--text-light);
-      font-size: 0.875rem;
-      line-height: 1.65;
-    }
-    
-    /* USE CASES */
-    .use-cases {
-      padding: 80px 5%;
-      max-width: 1200px;
-      margin: 0 auto;
-    }
-    
-    .use-case-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 24px;
-    }
-    
-    .use-case {
-      background: var(--bg);
-      border: 1px solid var(--border);
-      border-radius: 4px;
-      padding: 28px;
-    }
-    
-    .use-case h3 {
-      font-size: 0.875rem;
-      font-weight: 700;
-      text-transform: uppercase;
-      letter-spacing: 0.08em;
-      margin-bottom: 12px;
-      color: var(--primary);
-    }
-    
-    .use-case p {
-      color: var(--text-light);
-      font-size: 0.875rem;
-      line-height: 1.65;
-    }
-    
-    /* PRICING */
-    .pricing {
-      padding: 80px 5%;
-      background: var(--bg);
-      border-top: 1px solid var(--border);
-    }
-    
-    .pricing-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-      gap: 24px;
-      max-width: 960px;
-      margin: 0 auto;
-    }
-    
-    .pricing-card {
-      background: var(--bg-card);
-      border-radius: 4px;
-      padding: 32px;
-      text-align: center;
-      border: 1px solid var(--border);
-      transition: border-color 0.15s;
-    }
-    
-    .pricing-card.popular {
-      border-color: var(--primary);
-      border-width: 2px;
-    }
-    
-    .pricing-card h3 {
-      font-size: 0.75rem;
-      font-weight: 700;
-      text-transform: uppercase;
-      letter-spacing: 0.08em;
-      margin-bottom: 8px;
-      color: var(--text-muted);
-    }
-    
-    .price {
-      font-size: 2.5rem;
-      font-weight: 800;
-      color: var(--text);
-      letter-spacing: -0.025em;
-      margin-bottom: 4px;
-    }
-    
-    .price span {
-      font-size: 0.875rem;
+      gap: 8px;
+      font-size: 14px;
       font-weight: 500;
       color: var(--text-muted);
     }
     
-    .pricing-desc {
+    .int-item svg {
+      width: 20px;
+      height: 20px;
+      opacity: 0.6;
+    }
+    
+    /* Section Headers */
+    .section {
+      padding: 80px 0;
+    }
+    
+    .section-header {
+      text-align: center;
+      margin-bottom: 56px;
+    }
+    
+    .section-label {
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      color: var(--teal);
+      margin-bottom: 12px;
+    }
+    
+    .section-title {
+      font-size: clamp(28px, 4vw, 40px);
+      font-weight: 700;
+      letter-spacing: -0.5px;
+      margin-bottom: 16px;
+    }
+    
+    .section-sub {
+      font-size: 16px;
       color: var(--text-muted);
-      font-size: 0.8125rem;
-      margin-bottom: 24px;
-    }
-    
-    .pricing-features { text-align: left; margin-bottom: 28px; }
-    
-    .pricing-features li {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      padding: 6px 0;
-      font-size: 0.875rem;
-      color: var(--text);
-    }
-    
-    .pricing-features li svg {
-      width: 16px;
-      height: 16px;
-      color: var(--primary);
-      flex-shrink: 0;
-    }
-    
-    /* FAQ */
-    .faq {
-      padding: 80px 5%;
-      max-width: 760px;
+      max-width: 520px;
       margin: 0 auto;
     }
     
-    .faq-item {
-      border-bottom: 1px solid var(--border);
-      padding: 20px 0;
+    /* Features Grid */
+    .features-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1px;
+      background: var(--border);
+      border: 1px solid var(--border);
+      border-radius: 2px;
+      overflow: hidden;
     }
     
-    .faq-item:first-of-type {
-      border-top: 1px solid var(--border);
+    .feature {
+      background: var(--white);
+      padding: 32px;
     }
     
-    .faq-item h3 {
-      font-size: 0.9375rem;
+    .feature-icon {
+      width: 40px;
+      height: 40px;
+      border: 1px solid var(--border);
+      border-radius: 2px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 20px;
+    }
+    
+    .feature-icon svg {
+      width: 20px;
+      height: 20px;
+      color: var(--teal);
+    }
+    
+    .feature h3 {
+      font-size: 16px;
       font-weight: 600;
       margin-bottom: 8px;
-      color: var(--text);
     }
     
-    .faq-item p {
-      color: var(--text-light);
-      font-size: 0.875rem;
-      line-height: 1.65;
+    .feature p {
+      font-size: 14px;
+      color: var(--text-muted);
+      line-height: 1.6;
+    }
+    
+    /* How It Works */
+    .how { background: var(--white); }
+    
+    .how-steps {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1px;
+      background: var(--border);
+      border: 1px solid var(--border);
+    }
+    
+    .how-step {
+      background: var(--white);
+      padding: 40px 32px;
+      position: relative;
+    }
+    
+    .how-step::after {
+      content: '';
+      position: absolute;
+      top: 50%;
+      right: -1px;
+      width: 24px;
+      height: 1px;
+      background: var(--border);
+    }
+    
+    .how-step:last-child::after { display: none; }
+    
+    .step-num {
+      font-size: 12px;
+      font-weight: 700;
+      color: var(--teal);
+      margin-bottom: 16px;
+      font-variant-numeric: tabular-nums;
+    }
+    
+    .how-step h3 {
+      font-size: 18px;
+      font-weight: 600;
+      margin-bottom: 8px;
+    }
+    
+    .how-step p {
+      font-size: 14px;
+      color: var(--text-muted);
+      line-height: 1.6;
+    }
+    
+    /* Pricing */
+    .pricing-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+    }
+    
+    .price-card {
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: 2px;
+      padding: 32px;
+    }
+    
+    .price-card.popular {
+      border-color: var(--navy);
+    }
+    
+    .price-card h3 {
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      margin-bottom: 8px;
+    }
+    
+    .price-card .price {
+      font-size: 40px;
+      font-weight: 700;
+      letter-spacing: -1px;
+      margin-bottom: 4px;
+    }
+    
+    .price-card .price span {
+      font-size: 16px;
+      font-weight: 500;
+      color: var(--text-muted);
+    }
+    
+    .price-card .desc {
+      font-size: 14px;
+      color: var(--text-muted);
+      margin-bottom: 24px;
+      padding-bottom: 24px;
+      border-bottom: 1px solid var(--border);
+    }
+    
+    .price-card ul {
+      margin-bottom: 24px;
+    }
+    
+    .price-card li {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 14px;
+      padding: 8px 0;
+    }
+    
+    .price-card li svg {
+      width: 16px;
+      height: 16px;
+      color: var(--teal);
+      flex-shrink: 0;
+    }
+    
+    .price-card a {
+      display: block;
+      text-align: center;
+      padding: 12px;
+      border: 1px solid var(--border-dark);
+      border-radius: 2px;
+      font-size: 14px;
+      font-weight: 600;
+      transition: all 0.15s;
+    }
+    
+    .price-card a:hover {
+      background: var(--navy);
+      border-color: var(--navy);
+      color: var(--white);
+    }
+    
+    .price-card.popular a {
+      background: var(--navy);
+      border-color: var(--navy);
+      color: var(--white);
     }
     
     /* CTA */
     .cta {
-      padding: 80px 5%;
-      background: var(--text);
+      background: var(--navy);
+      color: var(--white);
+      padding: 80px 0;
       text-align: center;
     }
     
     .cta h2 {
-      font-size: 2rem;
-      font-weight: 800;
+      font-size: clamp(28px, 4vw, 40px);
+      font-weight: 700;
+      letter-spacing: -0.5px;
       margin-bottom: 12px;
-      letter-spacing: -0.02em;
-      color: var(--white);
     }
     
     .cta p {
-      font-size: 1rem;
-      color: rgba(255,255,255,0.6);
+      font-size: 16px;
+      color: rgba(255,255,255,0.7);
       margin-bottom: 32px;
-      max-width: 480px;
-      margin-left: auto;
-      margin-right: auto;
     }
     
-    .cta .btn {
-      background: var(--white);
-      color: var(--text);
-      font-size: 0.9375rem;
-      padding: 13px 28px;
+    .cta-form {
+      display: flex;
+      gap: 12px;
+      max-width: 440px;
+      margin: 0 auto;
+      justify-content: center;
     }
     
-    .cta .btn:hover { background: #F0EFED; }
+    .cta-form input {
+      flex: 1;
+      padding: 12px 16px;
+      border: 1px solid rgba(255,255,255,0.2);
+      border-radius: 2px;
+      font-size: 15px;
+      font-family: inherit;
+      background: rgba(255,255,255,0.1);
+      color: var(--white);
+    }
     
-    /* FOOTER */
+    .cta-form input::placeholder { color: rgba(255,255,255,0.5); }
+    
+    .cta-form input:focus {
+      outline: none;
+      border-color: var(--teal);
+    }
+    
+    .cta-form button {
+      padding: 12px 24px;
+      background: var(--teal);
+      color: var(--white);
+      border: none;
+      border-radius: 2px;
+      font-size: 14px;
+      font-weight: 600;
+      font-family: inherit;
+      cursor: pointer;
+      transition: background 0.15s;
+    }
+    
+    .cta-form button:hover {
+      background: var(--teal-dark);
+    }
+    
+    /* Footer */
     footer {
-      padding: 24px 5%;
-      text-align: center;
-      color: var(--text-muted);
-      font-size: 0.8125rem;
-      background: var(--bg);
+      padding: 32px 0;
+      background: var(--white);
       border-top: 1px solid var(--border);
     }
     
-    /* RESPONSIVE */
-    @media (max-width: 768px) {
-      .nav-links { display: none; }
-      .hero { padding: 56px 5% 48px; }
-      .section-title { font-size: 1.5rem; }
-      .waitlist-form input { width: 100%; }
+    footer .container {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
     }
-
-
+    
+    footer p {
+      font-size: 14px;
+      color: var(--text-muted);
+    }
+    
+    /* Responsive */
+    @media (max-width: 900px) {
+      .features-grid { grid-template-columns: repeat(2, 1fr); }
+      .pricing-grid { grid-template-columns: 1fr; max-width: 400px; margin: 0 auto; }
+      .how-steps { grid-template-columns: 1fr; }
+      .how-step::after { display: none; }
+    }
+    
+    @media (max-width: 640px) {
+      nav { display: none; }
+      .hero { padding: 120px 0 60px; }
+      .features-grid { grid-template-columns: 1fr; }
+      .hero-form { flex-direction: column; }
+      .cta-form { flex-direction: column; }
+      footer .container { flex-direction: column; gap: 16px; }
+    }
+  </style>
 </head>
 <body>
 
-  <!-- NAV -->
-  <nav>
-    <div class="logo">
-      <svg class="logo-icon" viewBox="0 0 40 40" fill="none">
-        <circle cx="20" cy="20" r="18" fill="#1A5F5F"/>
-        <circle cx="20" cy="14" r="5" fill="white"/>
-        <circle cx="12" cy="26" r="4" fill="white" opacity="0.8"/>
-        <circle cx="28" cy="26" r="4" fill="white" opacity="0.8"/>
-        <path d="M20 19V24M17 24L20 26L23 24" stroke="white" stroke-width="1.5" stroke-linecap="round"/>
-        <path d="M12 22L17 17M28 22L23 17" stroke="white" stroke-width="1.5" stroke-linecap="round" opacity="0.6"/>
-      </svg>
-      Kobrain
+  <header>
+    <div class="container">
+      <a href="#" class="logo">
+        <svg viewBox="0 0 32 32" fill="none">
+          <rect width="32" height="32" rx="2" fill="#0A1628"/>
+          <circle cx="16" cy="13" r="4.5" fill="#14B8A6"/>
+          <circle cx="10" cy="22" r="3.5" fill="#14B8A6" opacity="0.8"/>
+          <circle cx="22" cy="22" r="3.5" fill="#14B8A6" opacity="0.8"/>
+          <path d="M16 17.5V21M13.5 21L16 22.5L18.5 21" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+        Kobrain
+      </a>
+      <nav>
+        <a href="#features">Features</a>
+        <a href="#how">How it works</a>
+        <a href="#pricing">Pricing</a>
+        <a href="#waitlist" class="btn btn-primary">Join waitlist</a>
+      </nav>
     </div>
-    <div class="nav-links">
-      <a href="#features">Features</a>
-      <a href="#how-it-works">How It Works</a>
-      <a href="#pricing">Pricing</a>
-      <a href="#faq">FAQ</a>
-      <a href="#waitlist" class="btn btn-accent">Join Waitlist</a>
-    </div>
-  </nav>
+  </header>
 
-  <!-- HERO -->
-  <section class="hero" id="waitlist">
-    <h1>Your AI Teammate.<br><span>Works While You Sleep.</span></h1>
-    <p class="hero-sub">
-      Kobrain is your AI teammate — it has its own email, remembers your projects, and works while you sleep. You delegate tasks the same way you'd delegate to a human coworker: it owns the work, follows up, and reports back. Stop doing the grunt work yourself. Your teammate just got a lot smarter.
-    </p>
-    <form class="waitlist-form" onsubmit="handleSubmit(event)">
-      <input type="email" placeholder="your@email.com" required>
-      <button type="submit" class="btn btn-accent">Join Waitlist</button>
-    </form>
-    <p class="waitlist-question">What would you want your teammate to do? (optional)</p>
-    <textarea rows="3" placeholder="Example: Handle my customer emails, manage my calendar, update my Notion pages..."></textarea>
+  <section class="hero">
+    <div class="container">
+      <h1>Your AI teammate.<br><span>Has an inbox. Does the work.</span></h1>
+      <p>Kobrain is an AI teammate with its own email address. You delegate tasks by email. It codes, manages files, handles the work — while you sleep.</p>
+      <form class="hero-form" onsubmit="handleSubmit(event)">
+        <input type="email" placeholder="your@email.com" required>
+        <button type="submit">Join waitlist</button>
+      </form>
+    </div>
   </section>
 
-  <!-- INTEGRATIONS CAROUSEL -->
   <section class="integrations">
-    <p class="integrations-label">Works with your tools</p>
-    <div class="carousel">
-
-      <div class="carousel-item">
-        <img src="data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 32 32%27%3E%3Crect width=%2732%27 height=%2732%27 rx=%274%27 fill=%27%23EA4335%27/%3E%3Cpath d=%27M4 9L16 18L28 9%27 stroke=%27white%27 stroke-width=%272.5%27 stroke-linecap=%27round%27 fill=%27none%27/%3E%3Cpath d=%27M4 9V23H28V9%27 stroke=%27white%27 stroke-width=%272.5%27 stroke-linecap=%27round%27 fill=%27none%27/%3E%3C/svg%3E" width="28" height="28" style="display:block;" loading="lazy" />
-        Gmail
-      </div>
-      <div class="carousel-item">
-        <img src="data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 32 32%27%3E%3Crect width=%2732%27 height=%2732%27 rx=%274%27 fill=%27%234285F4%27/%3E%3Crect x=%277%27 y=%274%27 width=%2718%27 height=%2719%27 rx=%272%27 stroke=%27white%27 stroke-width=%271.5%27 fill=%27none%27/%3E%3Cpath d=%27M11 3V8M21 3V8%27 stroke=%27white%27 stroke-width=%272%27 stroke-linecap=%27round%27/%3E%3Crect x=%2710%27 y=%2713%27 width=%273%27 height=%273%27 rx=%270.5%27 fill=%27white%27/%3E%3Crect x=%2714.5%27 y=%2713%27 width=%273%27 height=%273%27 rx=%270.5%27 fill=%27white%27/%3E%3Crect x=%2719%27 y=%2713%27 width=%273%27 height=%273%27 rx=%270.5%27 fill=%27white%27/%3E%3C/svg%3E" width="28" height="28" style="display:block;" loading="lazy" />
-        Calendar
-      </div>
-      <div class="carousel-item">
-        <img src="data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 32 32%27%3E%3Crect width=%2732%27 height=%2732%27 rx=%274%27 fill=%27%23258AF7%27/%3E%3Cpath d=%27M9 5H19L25 11V27H9V5Z%27 stroke=%27white%27 stroke-width=%271.5%27 fill=%27none%27 stroke-linejoin=%27round%27/%3E%3Cpath d=%27M19 5V11H25%27 stroke=%27white%27 stroke-width=%271.5%27 fill=%27none%27 stroke-linejoin=%27round%27/%3E%3Cpath d=%27M12 19H20M12 23H17%27 stroke=%27white%27 stroke-width=%271.5%27 stroke-linecap=%27round%27/%3E%3C/svg%3E" width="28" height="28" style="display:block;" loading="lazy" />
-        Google Docs
-      </div>
-      <div class="carousel-item">
-        <img src="data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 32 32%27%3E%3Cpath d=%27M13 26L20 11H6L13 26Z%27 fill=%27%230066DA%27/%3E%3Cpath d=%27M13 26L20 17.5L27 26H13Z%27 fill=%27%2300AC47%27/%3E%3Cpath d=%27M13 11L20 2L27 11H13Z%27 fill=%27%2300832D%27/%3E%3Cpath d=%27M27 26L20 17.5L13 26H27Z%27 fill=%27%232684FC%27/%3E%3Cpath d=%27M27 11L20 17.5L13 11H27Z%27 fill=%27%23FFB900%27/%3E%3C/svg%3E" width="28" height="28" style="display:block;" loading="lazy" />
-        Google Drive
-      </div>
-      <div class="carousel-item">
-        <img src="data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 32 32%27%3E%3Ccircle cx=%2716%27 cy=%2716%27 r=%2714%27 fill=%27%232AABEE%27/%3E%3Cpath d=%27M12 17L21 10L14 22L11 18L12 17Z%27 fill=%27white%27/%3E%3C/svg%3E" width="28" height="28" style="display:block;" loading="lazy" />
-        Telegram
-      </div>
-      <div class="carousel-item">
-        <img src="data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 32 32%27%3E%3Crect width=%2732%27 height=%2732%27 rx=%274%27 fill=%27%231A1A1A%27/%3E%3Cpath d=%27M8 8H14L15 14H14V8H20V24H14V18H13L12 24H8V8Z%27 fill=%27white%27/%3E%3Cpath d=%27M17 11H23L24 17H23V11H27V24H23L22 17H21V24H17V11Z%27 fill=%27white%27/%3E%3C/svg%3E" width="28" height="28" style="display:block;" loading="lazy" />
-        Notion
-      </div>
-      <div class="carousel-item">
-        <img src="data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 32 32%27%3E%3Ccircle cx=%2716%27 cy=%2716%27 r=%2714%27 fill=%27%231A1A1A%27/%3E%3Cpath fill-rule=%27evenodd%27 clip-rule=%27evenodd%27 d=%27M16 4C9.925 4 5 9.925 5 16C5 20.055 7.615 23.553 11.114 24.671C11.617 24.741 11.797 24.465 11.797 24.235C11.797 24.027 11.796 23.333 11.796 22.48C9 22.88 8.393 21.19 8.393 21.19C7.68 19.862 6.742 19.5 6.742 19.5C5.637 18.86 6.738 18.865 6.738 18.865C7.834 18.942 8.478 19.91 8.478 19.91C9.525 21.45 10.953 21.08 11.749 20.87C11.868 20.31 12.183 19.93 12.524 19.72C9.86 19.51 7.043 18.5 7.043 13.98C7.043 12.76 7.531 11.79 8.309 11.05C8.19 10.83 7.735 9.79 8.427 7.96C8.427 7.96 9.375 7.58 11.796 9.14C12.565 8.91 13.395 8.79 14.225 8.79C15.055 8.79 15.885 8.91 16.654 9.14C19.075 7.58 20.021 7.96 20.021 7.96C20.715 9.79 20.26 10.83 20.139 11.05C20.917 11.79 21.404 12.76 21.404 13.98C21.404 18.52 18.585 19.5 15.918 19.7C16.339 19.97 16.729 20.47 16.729 21.23C16.729 22.33 16.724 23.24 16.724 24.235C16.724 24.465 16.904 24.745 17.413 24.667C20.908 23.55 23.519 20.055 23.519 16C23.519 9.925 18.595 4 12.52 4H16Z%27 fill=%27white%27/%3E%3C/svg%3E" width="28" height="28" style="display:block;" loading="lazy" />
-        GitHub
-      </div>
-      <div class="carousel-item">
-        <img src="data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 32 32%27%3E%3Crect width=%2732%27 height=%2732%27 rx=%274%27 fill=%27%231A1A1A%27/%3E%3Cpath d=%27M8 24L16 8L24 24H8Z%27 fill=%27white%27/%3E%3C/svg%3E" width="28" height="28" style="display:block;" loading="lazy" />
-        Vercel
-      </div>
-      <div class="carousel-item">
-        <img src="data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 32 32%27%3E%3Crect width=%2732%27 height=%2732%27 rx=%274%27 fill=%273ECF8E%27/%3E%3Cpath d=%27M11 22L16 10L21 22%27 stroke=%27white%27 stroke-width=%272.5%27 stroke-linecap=%27round%27 stroke-linejoin=%27round%27 fill=%27none%27/%3E%3Cpath d=%27M9 25H23%27 stroke=%27white%27 stroke-width=%272.5%27 stroke-linecap=%27round%27/%3E%3C/svg%3E" width="28" height="28" style="display:block;" loading="lazy" />
-        Supabase
-      </div>
-      <div class="carousel-item">
-        <img src="data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 32 32%27%3E%3Crect width=%2732%27 height=%2732%27 rx=%274%27 fill=%27646B7B%27/%3E%3Cpath d=%27M14.5 13C14.5 11.9 13.88 11.25 12.5 11.25C11.12 11.25 10.5 11.9 10.5 13C10.5 14.1 11.4 15.25 14.5 17.5C17.6 15.25 18.5 14.1 18.5 13C18.5 11.9 17.88 11.25 16.5 11.25C15.12 11.25 14.5 11.9 14.5 13ZM23 19C23 17.35 21.1 16.15 18.5 16.15C15.9 16.15 14 17.35 14 19C14 21.5 18 22 18 22H21C21 22 25 21.5 25 19C25 17.35 23 16.15 20.5 16.15C18 16.15 16.5 17.35 16.5 19%27 fill=%27white%27/%3E%3C/svg%3E" width="28" height="28" style="display:block;" loading="lazy" />
-        Stripe
-      </div>
-      <div class="carousel-item">
-        <img src="data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 32 32%27%3E%3Ccircle cx=%2716%27 cy=%2716%27 r=%2714%27 fill=%275865F2%27/%3E%3Ccircle cx=%2711%27 cy=%2713%27 r=%272%27 fill=%27white%27/%3E%3Ccircle cx=%2721%27 cy=%2713%27 r=%272%27 fill=%27white%27/%3E%3Cpath d=%27M12 12C12 12 12 10.5 12 10C12 9.5 12.3 9 12.8 9C14 9 15 9.8 15.5 10.5C15.5 10.5 15.5 10.5 15.5 10.5C15.5 10.5 16 10.5 16.5 10.5C17 10.5 17.5 10 17.5 9C17.9 9 18.3 9.5 18.3 10C18.3 10.5 18.3 12 18.3 12C18.3 12 19 13 20 13.5C21 14 21.5 13.5 21.5 13.5L19 15C19 15 18.5 15 18 15C17.5 15 17.3 15.5 17.3 15.5C17.3 15.5 16.5 16.5 15.5 16.5C14.5 16.5 13.8 16 13.5 15.5C13.5 15.5 13 15 13 15C13 15 12.5 15 12 15C12 15 11.5 14.5 11.5 14.5L9 13.5C9 13.5 9.5 14 10 14C10.5 14 11 13.5 11 13C11 12.5 11.5 12 12 12Z%27 fill=%27white%27/%3E%3C/svg%3E" width="28" height="28" style="display:block;" loading="lazy" />
-        Discord
-      </div>
-      <div class="carousel-item">
-        <img src="data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 32 32%27%3E%3Crect width=%2732%27 height=%2732%27 rx=%274%27 fill=%27%23EA4335%27/%3E%3Cpath d=%27M4 9L16 18L28 9%27 stroke=%27white%27 stroke-width=%272.5%27 stroke-linecap=%27round%27 fill=%27none%27/%3E%3Cpath d=%27M4 9V23H28V9%27 stroke=%27white%27 stroke-width=%272.5%27 stroke-linecap=%27round%27 fill=%27none%27/%3E%3C/svg%3E" width="28" height="28" style="display:block;" loading="lazy" />
-        Gmail
-      </div>
-      <div class="carousel-item">
-        <img src="data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 32 32%27%3E%3Crect width=%2732%27 height=%2732%27 rx=%274%27 fill=%27%234285F4%27/%3E%3Crect x=%277%27 y=%274%27 width=%2718%27 height=%2719%27 rx=%272%27 stroke=%27white%27 stroke-width=%271.5%27 fill=%27none%27/%3E%3Cpath d=%27M11 3V8M21 3V8%27 stroke=%27white%27 stroke-width=%272%27 stroke-linecap=%27round%27/%3E%3Crect x=%2710%27 y=%2713%27 width=%273%27 height=%273%27 rx=%270.5%27 fill=%27white%27/%3E%3Crect x=%2714.5%27 y=%2713%27 width=%273%27 height=%273%27 rx=%270.5%27 fill=%27white%27/%3E%3Crect x=%2719%27 y=%2713%27 width=%273%27 height=%273%27 rx=%270.5%27 fill=%27white%27/%3E%3C/svg%3E" width="28" height="28" style="display:block;" loading="lazy" />
-        Calendar
-      </div>
-      <div class="carousel-item">
-        <img src="data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 32 32%27%3E%3Crect width=%2732%27 height=%2732%27 rx=%274%27 fill=%27%23258AF7%27/%3E%3Cpath d=%27M9 5H19L25 11V27H9V5Z%27 stroke=%27white%27 stroke-width=%271.5%27 fill=%27none%27 stroke-linejoin=%27round%27/%3E%3Cpath d=%27M19 5V11H25%27 stroke=%27white%27 stroke-width=%271.5%27 fill=%27none%27 stroke-linejoin=%27round%27/%3E%3Cpath d=%27M12 19H20M12 23H17%27 stroke=%27white%27 stroke-width=%271.5%27 stroke-linecap=%27round%27/%3E%3C/svg%3E" width="28" height="28" style="display:block;" loading="lazy" />
-        Google Docs
-      </div>
-      <div class="carousel-item">
-        <img src="data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 32 32%27%3E%3Cpath d=%27M13 26L20 11H6L13 26Z%27 fill=%27%230066DA%27/%3E%3Cpath d=%27M13 26L20 17.5L27 26H13Z%27 fill=%27%2300AC47%27/%3E%3Cpath d=%27M13 11L20 2L27 11H13Z%27 fill=%27%2300832D%27/%3E%3Cpath d=%27M27 26L20 17.5L13 26H27Z%27 fill=%27%232684FC%27/%3E%3Cpath d=%27M27 11L20 17.5L13 11H27Z%27 fill=%27%23FFB900%27/%3E%3C/svg%3E" width="28" height="28" style="display:block;" loading="lazy" />
-        Google Drive
-      </div>
-      <div class="carousel-item">
-        <img src="data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 32 32%27%3E%3Ccircle cx=%2716%27 cy=%2716%27 r=%2714%27 fill=%27%232AABEE%27/%3E%3Cpath d=%27M12 17L21 10L14 22L11 18L12 17Z%27 fill=%27white%27/%3E%3C/svg%3E" width="28" height="28" style="display:block;" loading="lazy" />
-        Telegram
-      </div>
-      <div class="carousel-item">
-        <img src="data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 32 32%27%3E%3Crect width=%2732%27 height=%2732%27 rx=%274%27 fill=%27%231A1A1A%27/%3E%3Cpath d=%27M8 8H14L15 14H14V8H20V24H14V18H13L12 24H8V8Z%27 fill=%27white%27/%3E%3Cpath d=%27M17 11H23L24 17H23V11H27V24H23L22 17H21V24H17V11Z%27 fill=%27white%27/%3E%3C/svg%3E" width="28" height="28" style="display:block;" loading="lazy" />
-        Notion
-      </div>
-      <div class="carousel-item">
-        <img src="data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 32 32%27%3E%3Ccircle cx=%2716%27 cy=%2716%27 r=%2714%27 fill=%27%231A1A1A%27/%3E%3Cpath fill-rule=%27evenodd%27 clip-rule=%27evenodd%27 d=%27M16 4C9.925 4 5 9.925 5 16C5 20.055 7.615 23.553 11.114 24.671C11.617 24.741 11.797 24.465 11.797 24.235C11.797 24.027 11.796 23.333 11.796 22.48C9 22.88 8.393 21.19 8.393 21.19C7.68 19.862 6.742 19.5 6.742 19.5C5.637 18.86 6.738 18.865 6.738 18.865C7.834 18.942 8.478 19.91 8.478 19.91C9.525 21.45 10.953 21.08 11.749 20.87C11.868 20.31 12.183 19.93 12.524 19.72C9.86 19.51 7.043 18.5 7.043 13.98C7.043 12.76 7.531 11.79 8.309 11.05C8.19 10.83 7.735 9.79 8.427 7.96C8.427 7.96 9.375 7.58 11.796 9.14C12.565 8.91 13.395 8.79 14.225 8.79C15.055 8.79 15.885 8.91 16.654 9.14C19.075 7.58 20.021 7.96 20.021 7.96C20.715 9.79 20.26 10.83 20.139 11.05C20.917 11.79 21.404 12.76 21.404 13.98C21.404 18.52 18.585 19.5 15.918 19.7C16.339 19.97 16.729 20.47 16.729 21.23C16.729 22.33 16.724 23.24 16.724 24.235C16.724 24.465 16.904 24.745 17.413 24.667C20.908 23.55 23.519 20.055 23.519 16C23.519 9.925 18.595 4 12.52 4H16Z%27 fill=%27white%27/%3E%3C/svg%3E" width="28" height="28" style="display:block;" loading="lazy" />
-        GitHub
-      </div>
-      <div class="carousel-item">
-        <img src="data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 32 32%27%3E%3Crect width=%2732%27 height=%2732%27 rx=%274%27 fill=%27%231A1A1A%27/%3E%3Cpath d=%27M8 24L16 8L24 24H8Z%27 fill=%27white%27/%3E%3C/svg%3E" width="28" height="28" style="display:block;" loading="lazy" />
-        Vercel
-      </div>
-      <div class="carousel-item">
-        <img src="data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 32 32%27%3E%3Crect width=%2732%27 height=%2732%27 rx=%274%27 fill=%273ECF8E%27/%3E%3Cpath d=%27M11 22L16 10L21 22%27 stroke=%27white%27 stroke-width=%272.5%27 stroke-linecap=%27round%27 stroke-linejoin=%27round%27 fill=%27none%27/%3E%3Cpath d=%27M9 25H23%27 stroke=%27white%27 stroke-width=%272.5%27 stroke-linecap=%27round%27/%3E%3C/svg%3E" width="28" height="28" style="display:block;" loading="lazy" />
-        Supabase
-      </div>
-      <div class="carousel-item">
-        <img src="data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 32 32%27%3E%3Crect width=%2732%27 height=%2732%27 rx=%274%27 fill=%27646B7B%27/%3E%3Cpath d=%27M14.5 13C14.5 11.9 13.88 11.25 12.5 11.25C11.12 11.25 10.5 11.9 10.5 13C10.5 14.1 11.4 15.25 14.5 17.5C17.6 15.25 18.5 14.1 18.5 13C18.5 11.9 17.88 11.25 16.5 11.25C15.12 11.25 14.5 11.9 14.5 13ZM23 19C23 17.35 21.1 16.15 18.5 16.15C15.9 16.15 14 17.35 14 19C14 21.5 18 22 18 22H21C21 22 25 21.5 25 19C25 17.35 23 16.15 20.5 16.15C18 16.15 16.5 17.35 16.5 19%27 fill=%27white%27/%3E%3C/svg%3E" width="28" height="28" style="display:block;" loading="lazy" />
-        Stripe
-      </div>
-      <div class="carousel-item">
-        <img src="data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 32 32%27%3E%3Ccircle cx=%2716%27 cy=%2716%27 r=%2714%27 fill=%275865F2%27/%3E%3Ccircle cx=%2711%27 cy=%2713%27 r=%272%27 fill=%27white%27/%3E%3Ccircle cx=%2721%27 cy=%2713%27 r=%272%27 fill=%27white%27/%3E%3Cpath d=%27M12 12C12 12 12 10.5 12 10C12 9.5 12.3 9 12.8 9C14 9 15 9.8 15.5 10.5C15.5 10.5 15.5 10.5 15.5 10.5C15.5 10.5 16 10.5 16.5 10.5C17 10.5 17.5 10 17.5 9C17.9 9 18.3 9.5 18.3 10C18.3 10.5 18.3 12 18.3 12C18.3 12 19 13 20 13.5C21 14 21.5 13.5 21.5 13.5L19 15C19 15 18.5 15 18 15C17.5 15 17.3 15.5 17.3 15.5C17.3 15.5 16.5 16.5 15.5 16.5C14.5 16.5 13.8 16 13.5 15.5C13.5 15.5 13 15 13 15C13 15 12.5 15 12 15C12 15 11.5 14.5 11.5 14.5L9 13.5C9 13.5 9.5 14 10 14C10.5 14 11 13.5 11 13C11 12.5 11.5 12 12 12Z%27 fill=%27white%27/%3E%3C/svg%3E" width="28" height="28" style="display:block;" loading="lazy" />
-        Discord
-      </div>
-    </div>
-
-    
-  </section>
-
-  <!-- FEATURES -->
-  <section class="features" id="features">
-    <h2 class="section-title">Your Teammate. In Your Workflow.</h2>
-    <p class="section-sub">Kobrain slots into how you already work — email, code, files, calendar. No new app to learn. Just a teammate who lives in your existing tools.</p>
-    
-    <div class="feature-grid">
-      <div class="feature-card">
-        <div class="feature-icon">
-          <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
+    <div class="container">
+      <p>Works with your tools</p>
+      <div class="int-grid">
+        <div class="int-item">
+          <svg viewBox="0 0 24 24" fill="#EA4335"><path d="M1 1h10v10H1V1zm11 11h10v10H12V12zM1 13h10v10H1V13z"/></svg>
+          Gmail
         </div>
-        <h3>Its Own Email Inbox</h3>
-        <p>Every Kobrain has a real email address — kobrain@yourdomain.com. You CC them on tasks. They read emails, extract action items, and get to work. No app to open. Just email.</p>
-      </div>
-      
-      <div class="feature-card">
-        <div class="feature-icon">
-          <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"/></svg>
+        <div class="int-item">
+          <svg viewBox="0 0 24 24" fill="#4285F4"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg>
+          Calendar
         </div>
-        <h3>Codes & Uses Developer Tools</h3>
-        <p>Kobrain connects to GitHub, Vercel, Supabase, and more. It can write code, push commits, review PRs, manage deployments — like a developer teammate who never sleeps.</p>
-      </div>
-      
-      <div class="feature-card">
-        <div class="feature-icon">
-          <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M4 4h16v16H4V4zm2 4v12h12V8H6z"/></svg>
+        <div class="int-item">
+          <svg viewBox="0 0 24 24" fill="#333"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
+          GitHub
         </div>
-        <h3>Manages Your Files & Docs</h3>
-        <p>Connects to Google Drive, Docs, Notion, and more. Reads your documents, updates your files, keeps your knowledge base current — without you lifting a finger.</p>
-      </div>
-      
-      <div class="feature-card">
-        <div class="feature-icon">
-          <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/></svg>
+        <div class="int-item">
+          <svg viewBox="0 0 24 24" fill="#4F46E5"><path d="M4 4h16v16H4V4zm2 2v12h12V6H6zm2 2h8v2H8V8zm0 4h8v2H8v-2z"/></svg>
+          Notion
         </div>
-        <h3>Runs Your Calendar</h3>
-        <p>Schedules meetings, sends invites, manages your calendar. Kobrain coordinates your time so you can focus on work that actually matters.</p>
-      </div>
-      
-      <div class="feature-card">
-        <div class="feature-icon">
-          <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"/></svg>
+        <div class="int-item">
+          <svg viewBox="0 0 24 24" fill="#30A3DC"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
+          Drive
         </div>
-        <h3>Remembers Everything</h3>
-        <p>Kobrain has a persistent memory of your preferences, your projects, your team. It learns how you work and gets better over time. Like a teammate who's been there from day one.</p>
-      </div>
-      
-      <div class="feature-card">
-        <div class="feature-icon">
-          <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
+        <div class="int-item">
+          <svg viewBox="0 0 24 24" fill="#FF9900"><path d="M4 4h16v16H4V4zm2 2v12h12V6H6zm2 2h8v2H8V8zm0 4h8v2H8v-2z"/></svg>
+          Sheets
         </div>
-        <h3>Works While You Sleep</h3>
-        <p>You delegate at 11pm. You wake up to completed tasks. Kobrain runs on your schedule — night shifts, weekends, whenever you need. You don't wait on your teammate.</p>
+        <div class="int-item">
+          <svg viewBox="0 0 24 24" fill="#646B7B"><path d="M12 0C5.37 0 0 5.37 0 12s5.37 12 12 12 12-5.37 12-12S18.63 0 12 0zm0 4a8 8 0 100 16 8 8 0 000-16z"/></svg>
+          Telegram
+        </div>
       </div>
     </div>
   </section>
 
-  <!-- HOW IT WORKS -->
-  <section class="how-it-works" id="how-it-works">
-    <h2 class="section-title">How Kobrain Works</h2>
-    <p class="section-sub">Three steps to having a teammate who works as hard as you do.</p>
-    
-    <div class="steps">
-      <div class="step">
-        <div class="step-num">1</div>
-        <h3>Create Your Kobrain</h3>
-        <p>Give it a name, an email address, and define its role. What does it do? What's off-limits? You set the rules. Kobrain learns from how you want to work.</p>
+  <section class="section" id="features">
+    <div class="container">
+      <div class="section-header">
+        <p class="section-label">Features</p>
+        <h2 class="section-title">Everything a teammate needs</h2>
+        <p class="section-sub">Not an assistant. Not a chatbot. A real teammate that lives in your workflow.</p>
       </div>
       
-      <div class="step">
-        <div class="step-num">2</div>
-        <h3>Delegate by Email</h3>
-        <p>Send an email to your Kobrain. CC them on tasks. Loop them into threads. They'll read it, understand what you need, and get to work — using your actual tools.</p>
-      </div>
-      
-      <div class="step">
-        <div class="step-num">3</div>
-        <h3>Wake Up to Done Work</h3>
-        <p>Your Kobrain works through tasks, sends updates, and completes what you assigned. You review, redirect, and focus on the work only a human can do.</p>
+      <div class="features-grid">
+        <div class="feature">
+          <div class="feature-icon">
+            <svg fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
+          </div>
+          <h3>Own Email Inbox</h3>
+          <p>A real email address. CC them tasks. They read it, understand it, and get to work.</p>
+        </div>
+        
+        <div class="feature">
+          <div class="feature-icon">
+            <svg fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"/></svg>
+          </div>
+          <h3>Codes & Ships</h3>
+          <p>Connects to GitHub, Vercel, Supabase. Writes code, reviews PRs, manages deployments.</p>
+        </div>
+        
+        <div class="feature">
+          <div class="feature-icon">
+            <svg fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path d="M4 4h16v16H4V4zm2 4v12h12V8H6z"/></svg>
+          </div>
+          <h3>Manages Files</h3>
+          <p>Drive, Notion, Docs — reads your files, updates them, keeps your workspace current.</p>
+        </div>
+        
+        <div class="feature">
+          <div class="feature-icon">
+            <svg fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/></svg>
+          </div>
+          <h3>Runs Calendar</h3>
+          <p>Schedules meetings, sends invites, manages your time so you focus on what matters.</p>
+        </div>
+        
+        <div class="feature">
+          <div class="feature-icon">
+            <svg fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"/></svg>
+          </div>
+          <h3>Remembers Everything</h3>
+          <p>Persistent memory of your preferences, projects, and how you work. Gets smarter over time.</p>
+        </div>
+        
+        <div class="feature">
+          <div class="feature-icon">
+            <svg fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
+          </div>
+          <h3>Works While You Sleep</h3>
+          <p>Delegate at 11pm. Wake up to completed tasks. Your teammate never clocks out.</p>
+        </div>
       </div>
     </div>
   </section>
 
-  <!-- USE CASES -->
-  <section class="use-cases">
-    <div class="use-case-grid">
-      <div class="use-case">
-        <h3>For Founders & Builders</h3>
-        <p>Stop drowning in customer emails, Slack messages, and follow-ups. Kobrain handles the administrative overhead so you ship product and talk to customers.</p>
+  <section class="section how" id="how">
+    <div class="container">
+      <div class="section-header">
+        <p class="section-label">How it works</p>
+        <h2 class="section-title">Three steps to your new teammate</h2>
+        <p class="section-sub">Create. Delegate. Done.</p>
       </div>
       
-      <div class="use-case">
-        <h3>For Developers</h3>
-        <p>Your AI teammate reviews PRs, manages repos, updates docs, and handles the GitHub busywork. You focus on architecture and code that matters.</p>
-      </div>
-      
-      <div class="use-case">
-        <h3>For Busy Professionals</h3>
-        <p>Email triage, calendar management, meeting prep — the work that eats your day. Kobrain handles the repetitive so you do the meaningful.</p>
+      <div class="how-steps">
+        <div class="how-step">
+          <p class="step-num">01</p>
+          <h3>Create</h3>
+          <p>Give your Kobrain a name, role, and email. Set the rules. They're ready.</p>
+        </div>
+        
+        <div class="how-step">
+          <p class="step-num">02</p>
+          <h3>Delegate</h3>
+          <p>Email them tasks. CC them on threads. Loop them in. Just like a real teammate.</p>
+        </div>
+        
+        <div class="how-step">
+          <p class="step-num">03</p>
+          <h3>Done</h3>
+          <p>They work. They email back. You review and focus on what only humans can do.</p>
+        </div>
       </div>
     </div>
   </section>
 
-  <!-- PRICING -->
-  <section class="pricing" id="pricing">
-    <h2 class="section-title">Simple Pricing</h2>
-    <p class="section-sub">Start free. Scale as you go. No surprises.</p>
-    
-    <div class="pricing-grid">
-      <div class="pricing-card">
-        <h3>Starter</h3>
-        <div class="price">$20<span>/month</span></div>
-        <p class="pricing-desc">One AI teammate. Core integrations.</p>
-        <ul class="pricing-features">
-          <li><svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M5 13l4 4L19 7"/></svg> 1 Kobrain teammate</li>
-          <li><svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M5 13l4 4L19 7"/></svg> Email inbox</li>
-          <li><svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M5 13l4 4L19 7"/></svg> Gmail + Notion + Calendar</li>
-          <li><svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M5 13l4 4L19 7"/></svg> 10GB storage</li>
-          <li><svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M5 13l4 4L19 7"/></svg> Email support</li>
-        </ul>
-        <a href="#waitlist" class="btn btn-outline" style="width:100%;justify-content:center;">Join Waitlist</a>
+  <section class="section" id="pricing">
+    <div class="container">
+      <div class="section-header">
+        <p class="section-label">Pricing</p>
+        <h2 class="section-title">Simple, transparent</h2>
+        <p class="section-sub">Start free. Scale as you grow.</p>
       </div>
       
-      <div class="pricing-card popular">
-        <h3>Pro</h3>
-        <div class="price">$50<span>/month</span></div>
-        <p class="pricing-desc">All integrations. More power.</p>
-        <ul class="pricing-features">
-          <li><svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M5 13l4 4L19 7"/></svg> Everything in Starter</li>
-          <li><svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M5 13l4 4L19 7"/></svg> GitHub + Vercel + Supabase</li>
-          <li><svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M5 13l4 4L19 7"/></svg> Drive + Sheets + Docs</li>
-          <li><svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M5 13l4 4L19 7"/></svg> 50GB storage</li>
-          <li><svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M5 13l4 4L19 7"/></svg> Priority support</li>
-        </ul>
-        <a href="#waitlist" class="btn btn-accent" style="width:100%;justify-content:center;">Join Waitlist</a>
+      <div class="pricing-grid">
+        <div class="price-card">
+          <h3>Starter</h3>
+          <div class="price">$20<span>/mo</span></div>
+          <p class="desc">One AI teammate. Core integrations.</p>
+          <ul>
+            <li>
+              <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M5 13l4 4L19 7"/></svg>
+              1 Kobrain teammate
+            </li>
+            <li>
+              <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M5 13l4 4L19 7"/></svg>
+              Email inbox
+            </li>
+            <li>
+              <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M5 13l4 4L19 7"/></svg>
+              Gmail + Notion + Calendar
+            </li>
+            <li>
+              <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M5 13l4 4L19 7"/></svg>
+              10GB storage
+            </li>
+          </ul>
+          <a href="#waitlist">Join waitlist</a>
+        </div>
+        
+        <div class="price-card popular">
+          <h3>Pro</h3>
+          <div class="price">$50<span>/mo</span></div>
+          <p class="desc">All integrations. More power.</p>
+          <ul>
+            <li>
+              <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M5 13l4 4L19 7"/></svg>
+              Everything in Starter
+            </li>
+            <li>
+              <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M5 13l4 4L19 7"/></svg>
+              GitHub + Vercel + Supabase
+            </li>
+            <li>
+              <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M5 13l4 4L19 7"/></svg>
+              Drive + Sheets + Docs
+            </li>
+            <li>
+              <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M5 13l4 4L19 7"/></svg>
+              50GB storage
+            </li>
+          </ul>
+          <a href="#waitlist">Join waitlist</a>
+        </div>
+        
+        <div class="price-card">
+          <h3>Max</h3>
+          <div class="price">$100<span>/mo</span></div>
+          <p class="desc">Everything. Unlimited.</p>
+          <ul>
+            <li>
+              <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M5 13l4 4L19 7"/></svg>
+              Everything in Pro
+            </li>
+            <li>
+              <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M5 13l4 4L19 7"/></svg>
+              Telegram + Discord + WhatsApp
+            </li>
+            <li>
+              <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M5 13l4 4L19 7"/></svg>
+              Stripe + Lemon Squeezy
+            </li>
+            <li>
+              <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M5 13l4 4L19 7"/></svg>
+              100GB storage
+            </li>
+          </ul>
+          <a href="#waitlist">Join waitlist</a>
+        </div>
       </div>
-      
-      <div class="pricing-card">
-        <h3>Max</h3>
-        <div class="price">$100<span>/month</span></div>
-        <p class="pricing-desc">Everything. Unlimited.</p>
-        <ul class="pricing-features">
-          <li><svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M5 13l4 4L19 7"/></svg> Everything in Pro</li>
-          <li><svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M5 13l4 4L19 7"/></svg> Telegram + Discord + WhatsApp</li>
-          <li><svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M5 13l4 4L19 7"/></svg> Stripe + Lemon Squeezy</li>
-          <li><svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M5 13l4 4L19 7"/></svg> 100GB storage</li>
-          <li><svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M5 13l4 4L19 7"/></svg> Slack integration</li>
-        </ul>
-        <a href="#waitlist" class="btn btn-outline" style="width:100%;justify-content:center;">Join Waitlist</a>
-      </div>
     </div>
   </section>
 
-  <!-- FAQ -->
-  <section class="faq" id="faq">
-    <h2 class="section-title">Questions?</h2>
-    
-    <div class="faq-item">
-      <h3>What makes Kobrain different from ChatGPT or Claude?</h3>
-      <p>Those are chatbots. Kobrain is a teammate — with its own email, its own memory, and access to your real tools. You delegate work via email. It does the work and emails you back. It's persistent, remembers everything, and operates in your actual workflow — not a chat window.</p>
-    </div>
-    
-    <div class="faq-item">
-      <h3>Can it really code and use GitHub?</h3>
-      <p>Yes. Kobrain connects to GitHub, Vercel, Supabase, and other developer tools. It can write code, review pull requests, push commits, and manage deployments. It works like a developer teammate who has access to your entire stack.</p>
-    </div>
-    
-    <div class="faq-item">
-      <h3>What if it makes a mistake?</h3>
-      <p>Kobrain sends you updates before taking big actions. You set the boundaries — what it can do autonomously and what needs your approval. Like any teammate, you manage by outcomes, not micromanagement.</p>
-    </div>
-    
-    <div class="faq-item">
-      <h3>Is my data secure?</h3>
-      <p>Kobrain operates within the integrations you authorize. It only has access to what you grant it. You can revoke access at any time. Your data is encrypted and we never use it to train models.</p>
-    </div>
-    
-    <div class="faq-item">
-      <h3>When can I get started?</h3>
-      <p>We're currently building. Join the waitlist and we'll notify you when early access opens. Early members get priority onboarding and founding member pricing.</p>
+  <section class="cta" id="waitlist">
+    <div class="container">
+      <h2>Your teammate is waiting</h2>
+      <p>Join the waitlist and be first to know when Kobrain opens for early access.</p>
+      <form class="cta-form" onsubmit="handleSubmit(event)">
+        <input type="email" placeholder="your@email.com" required>
+        <button type="submit">Join waitlist</button>
+      </form>
     </div>
   </section>
 
-  <!-- CTA -->
-  <section class="cta">
-    <h2>Your Teammate is Waiting</h2>
-    <p>Stop doing work that a teammate could do. Join the waitlist and be first to know when Kobrain launches.</p>
-    <a href="#waitlist" class="btn">Join the Waitlist</a>
-  </section>
-
-  <!-- FOOTER -->
   <footer>
-    <p>© 2026 Kobrain — Your AI Teammate. Built by <a href="https://github.com/jccollinsdev" style="color:var(--primary);text-decoration:none;">Josiah Collins</a> & <a href="https://github.com/sansarkarki" style="color:var(--primary);text-decoration:none;">Sansar Karki</a></p>
+    <div class="container">
+      <p>© 2026 Kobrain</p>
+      <p>Your AI Teammate</p>
+    </div>
   </footer>
 
   <script>
     function handleSubmit(e) {
       e.preventDefault();
-      const email = e.target.querySelector('input[type="email"]').value;
-      const useCase = e.target.parentElement.querySelector('textarea').value;
-      alert('Thanks! ' + email + ' is on the waitlist.');
-      // TODO: Connect to backend
+      const email = e.target.querySelector('input').value;
+      alert('You\'re on the list! We\'ll be in touch at ' + email);
     }
   </script>
 
