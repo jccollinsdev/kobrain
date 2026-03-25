@@ -10,13 +10,14 @@
     * { margin: 0; padding: 0; box-sizing: border-box; }
     
     :root {
-      --primary: #4F46E5;
-      --primary-dark: #3730A3;
-      --accent: #F97316;
-      --bg: #FAFAFA;
-      --bg-dark: #F1F5F9;
-      --text: #1E293B;
-      --text-light: #64748B;
+      --primary: #8BA4E8;
+      --primary-dark: #6B88D6;
+      --accent: #F4A261;
+      --accent-dark: #E8894A;
+      --bg: #F5F7FC;
+      --bg-dark: #EDF0F9;
+      --text: #3D4667;
+      --text-light: #8896A7;
       --white: #FFFFFF;
     }
     
@@ -44,7 +45,7 @@
       gap: 0.75rem;
       font-weight: 800;
       font-size: 1.5rem;
-      color: var(--primary);
+      color: var(--text);
     }
     
     .logo-icon {
@@ -66,7 +67,7 @@
       transition: color 0.2s;
     }
     
-    .nav-links a:hover { color: var(--primary); }
+    .nav-links a:hover { color: var(--text); }
     
     .btn {
       background: var(--primary);
@@ -94,13 +95,13 @@
     }
     
     .btn-accent:hover {
-      background: #EA580C;
+      background: var(--accent-dark);
     }
     
     .btn-outline {
       background: transparent;
       border: 2px solid var(--primary);
-      color: var(--primary);
+      color: var(--text);
     }
     
     .btn-outline:hover {
@@ -111,9 +112,10 @@
     /* HERO */
     .hero {
       text-align: center;
-      padding: 5rem 5% 4rem;
+      padding: 6rem 5% 5rem;
       max-width: 900px;
       margin: 0 auto;
+      background: radial-gradient(ellipse at 50% 0%, rgba(139, 164, 232, 0.12) 0%, transparent 70%);
     }
     
     .hero h1 {
@@ -125,7 +127,7 @@
     }
     
     .hero h1 span {
-      color: var(--primary);
+      color: var(--text);
     }
     
     .hero-sub {
@@ -146,7 +148,7 @@
     
     .waitlist-form input {
       padding: 0.875rem 1.25rem;
-      border: 2px solid #E2E8F0;
+      border: 2px solid rgba(139, 164, 232, 0.3);
       border-radius: 8px;
       font-size: 1rem;
       width: 280px;
@@ -156,7 +158,7 @@
     
     .waitlist-form input:focus {
       outline: none;
-      border-color: var(--primary);
+      border-color: var(--text);
     }
     
     .waitlist-question {
@@ -169,7 +171,7 @@
       width: 100%;
       max-width: 500px;
       padding: 0.75rem;
-      border: 2px solid #E2E8F0;
+      border: 2px solid rgba(139, 164, 232, 0.3);
       border-radius: 8px;
       font-family: inherit;
       font-size: 0.9rem;
@@ -180,7 +182,8 @@
     /* INTEGRATIONS CAROUSEL */
     .integrations {
       padding: 4rem 0;
-      background: var(--white);
+      background: rgba(255,255,255,0.85);
+      backdrop-filter: blur(12px);
       overflow: hidden;
     }
     
@@ -216,7 +219,7 @@
       font-size: 1.25rem;
       color: var(--text-light);
       white-space: nowrap;
-      opacity: 0.7;
+      opacity: 0.6;
       transition: opacity 0.2s;
     }
     
@@ -256,7 +259,8 @@
     }
     
     .feature-card {
-      background: var(--white);
+      background: rgba(255,255,255,0.85);
+      backdrop-filter: blur(12px);
       border-radius: 16px;
       padding: 2rem;
       border: 1px solid #E2E8F0;
@@ -264,15 +268,15 @@
     }
     
     .feature-card:hover {
-      border-color: var(--primary);
-      box-shadow: 0 20px 40px rgba(79, 70, 229, 0.1);
+      border-color: var(--text);
+      box-shadow: 0 12px 40px rgba(100, 120, 200, 0.15);
       transform: translateY(-4px);
     }
     
     .feature-icon {
       width: 56px;
       height: 56px;
-      background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+      background: linear-gradient(135deg, #9BB5F0, #7C9BEA);
       border-radius: 12px;
       display: flex;
       align-items: center;
@@ -301,7 +305,8 @@
     /* HOW IT WORKS */
     .how-it-works {
       padding: 5rem 5%;
-      background: var(--white);
+      background: rgba(255,255,255,0.85);
+      backdrop-filter: blur(12px);
     }
     
     .steps {
@@ -320,7 +325,7 @@
     .step-num {
       width: 64px;
       height: 64px;
-      background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+      background: linear-gradient(135deg, #9BB5F0, #7C9BEA);
       color: var(--white);
       border-radius: 50%;
       display: flex;
@@ -357,7 +362,7 @@
     }
     
     .use-case {
-      background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+      background: linear-gradient(135deg, #9BB5F0, #7C9BEA);
       color: var(--white);
       border-radius: 20px;
       padding: 2.5rem;
@@ -370,15 +375,15 @@
     }
     
     .use-case p {
-      opacity: 0.9;
-      font-size: 0.95rem;
+      opacity: 0.8;
+      font-size: 0.9rem;
       line-height: 1.7;
     }
     
     /* PRICING */
     .pricing {
       padding: 5rem 5%;
-      background: var(--bg-dark);
+      background: rgba(237,240,249,0.6);
     }
     
     .pricing-grid {
@@ -390,7 +395,8 @@
     }
     
     .pricing-card {
-      background: var(--white);
+      background: rgba(255,255,255,0.85);
+      backdrop-filter: blur(12px);
       border-radius: 20px;
       padding: 2.5rem;
       text-align: center;
@@ -399,8 +405,8 @@
     }
     
     .pricing-card.popular {
-      border-color: var(--primary);
-      transform: scale(1.03);
+      border-color: var(--text);
+      transform: scale(1.02);
       box-shadow: 0 20px 60px rgba(79, 70, 229, 0.2);
     }
     
@@ -413,7 +419,7 @@
     .price {
       font-size: 3rem;
       font-weight: 800;
-      color: var(--primary);
+      color: var(--text);
       margin-bottom: 0.5rem;
     }
     
@@ -446,7 +452,7 @@
     .pricing-features li svg {
       width: 20px;
       height: 20px;
-      color: var(--primary);
+      color: var(--text);
       flex-shrink: 0;
     }
     
@@ -458,7 +464,7 @@
     }
     
     .faq-item {
-      border-bottom: 1px solid #E2E8F0;
+      border-bottom: 1px solid rgba(139, 164, 232, 0.15);
       padding: 1.5rem 0;
     }
     
@@ -477,7 +483,7 @@
     /* CTA */
     .cta {
       padding: 5rem 5%;
-      background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+      background: linear-gradient(135deg, #9BB5F0, #7C9BEA);
       text-align: center;
       color: var(--white);
     }
@@ -498,8 +504,9 @@
     }
     
     .cta .btn {
-      background: var(--white);
-      color: var(--primary);
+      background: rgba(255,255,255,0.85);
+      backdrop-filter: blur(12px);
+      color: var(--text);
       font-size: 1.1rem;
       padding: 1rem 2rem;
     }
@@ -532,7 +539,7 @@
   <nav>
     <div class="logo">
       <svg class="logo-icon" viewBox="0 0 40 40" fill="none">
-        <circle cx="20" cy="20" r="18" fill="#4F46E5"/>
+        <circle cx="20" cy="20" r="18" fill="#8BA4E8"/>
         <circle cx="20" cy="14" r="5" fill="white"/>
         <circle cx="12" cy="26" r="4" fill="white" opacity="0.8"/>
         <circle cx="28" cy="26" r="4" fill="white" opacity="0.8"/>
