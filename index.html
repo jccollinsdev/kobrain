@@ -10,31 +10,23 @@
     * { margin: 0; padding: 0; box-sizing: border-box; }
     
     :root {
-      --primary: #FE552E;
-      --primary-dark: #D9441F;
-      --accent: #7FC2C8;
-      --bg: #E5DCCA;
-      --bg-dark: #D9CCBA;
-      --text: #252525;
-      --text-light: #5a5a5a;
+      --primary: #4F46E5;
+      --primary-dark: #3730A3;
+      --accent: #F97316;
+      --bg: #FAFAFA;
+      --bg-dark: #F1F5F9;
+      --text: #1E293B;
+      --text-light: #64748B;
       --white: #FFFFFF;
-      --black: #252525;
-      --teal: #7FC2C8;
     }
-    
-    html { scroll-behavior: smooth; }
     
     body {
       font-family: 'Inter', -apple-system, sans-serif;
-      background: var(--black);
-      color: var(--white);
+      background: var(--bg);
+      color: var(--text);
       line-height: 1.6;
       overflow-x: hidden;
     }
-    
-    a { color: inherit; text-decoration: none; }
-    ul { list-style: none; }
-    img { max-width: 100%; display: block; }
     
     /* NAV */
     nav {
@@ -52,10 +44,13 @@
       gap: 0.75rem;
       font-weight: 800;
       font-size: 1.5rem;
-      color: var(--white);
+      color: var(--primary);
     }
     
-    .logo-icon { width: 40px; height: 40px; }
+    .logo-icon {
+      width: 40px;
+      height: 40px;
+    }
     
     .nav-links {
       display: flex;
@@ -65,13 +60,13 @@
     
     .nav-links a {
       text-decoration: none;
-      color: rgba(255,255,255,0.6);
+      color: var(--text-light);
       font-weight: 500;
       font-size: 0.95rem;
       transition: color 0.2s;
     }
     
-    .nav-links a:hover { color: var(--white); }
+    .nav-links a:hover { color: var(--primary); }
     
     .btn {
       background: var(--primary);
@@ -94,8 +89,13 @@
       transform: translateY(-1px);
     }
     
-    .btn-accent { background: var(--teal); }
-    .btn-accent:hover { background: #6AAFAF; }
+    .btn-accent {
+      background: var(--accent);
+    }
+    
+    .btn-accent:hover {
+      background: #EA580C;
+    }
     
     .btn-outline {
       background: transparent;
@@ -111,7 +111,7 @@
     /* HERO */
     .hero {
       text-align: center;
-      padding: 6rem 5% 5rem;
+      padding: 5rem 5% 4rem;
       max-width: 900px;
       margin: 0 auto;
     }
@@ -121,14 +121,16 @@
       font-weight: 800;
       line-height: 1.1;
       margin-bottom: 1.5rem;
-      color: var(--white);
+      color: var(--text);
     }
     
-    .hero h1 span { color: var(--primary); }
+    .hero h1 span {
+      color: var(--primary);
+    }
     
     .hero-sub {
       font-size: 1.25rem;
-      color: rgba(255,255,255,0.6);
+      color: var(--text-light);
       max-width: 680px;
       margin: 0 auto 2.5rem;
       line-height: 1.7;
@@ -144,13 +146,11 @@
     
     .waitlist-form input {
       padding: 0.875rem 1.25rem;
-      border: 2px solid rgba(255,255,255,0.15);
+      border: 2px solid #E2E8F0;
       border-radius: 8px;
       font-size: 1rem;
       width: 280px;
       font-family: inherit;
-      background: #1a1a1a;
-      color: var(--white);
       transition: border-color 0.2s;
     }
     
@@ -159,11 +159,9 @@
       border-color: var(--primary);
     }
     
-    .waitlist-form input::placeholder { color: rgba(255,255,255,0.35); }
-    
     .waitlist-question {
       font-size: 0.9rem;
-      color: rgba(255,255,255,0.4);
+      color: var(--text-light);
       margin-top: 1rem;
     }
     
@@ -171,22 +169,18 @@
       width: 100%;
       max-width: 500px;
       padding: 0.75rem;
-      border: 2px solid rgba(255,255,255,0.15);
+      border: 2px solid #E2E8F0;
       border-radius: 8px;
       font-family: inherit;
       font-size: 0.9rem;
       resize: none;
       margin-top: 0.5rem;
-      background: #1a1a1a;
-      color: var(--white);
     }
-    
-    .waitlist-question textarea::placeholder { color: rgba(255,255,255,0.35); }
     
     /* INTEGRATIONS CAROUSEL */
     .integrations {
       padding: 4rem 0;
-      background: var(--bg);
+      background: var(--white);
       overflow: hidden;
     }
     
@@ -194,7 +188,7 @@
       text-align: center;
       font-size: 0.9rem;
       font-weight: 600;
-      color: var(--text);
+      color: var(--text-light);
       text-transform: uppercase;
       letter-spacing: 0.1em;
       margin-bottom: 2rem;
@@ -220,7 +214,7 @@
       gap: 0.75rem;
       font-weight: 600;
       font-size: 1.25rem;
-      color: var(--text);
+      color: var(--text-light);
       white-space: nowrap;
       opacity: 0.7;
       transition: opacity 0.2s;
@@ -228,7 +222,10 @@
     
     .carousel-item:hover { opacity: 1; }
     
-    .carousel-item svg { width: 32px; height: 32px; }
+    .carousel-item svg {
+      width: 32px;
+      height: 32px;
+    }
     
     /* FEATURES */
     .features {
@@ -242,12 +239,11 @@
       font-size: 2.25rem;
       font-weight: 700;
       margin-bottom: 1rem;
-      color: var(--white);
     }
     
     .section-sub {
       text-align: center;
-      color: rgba(255,255,255,0.55);
+      color: var(--text-light);
       font-size: 1.1rem;
       max-width: 600px;
       margin: 0 auto 3.5rem;
@@ -260,16 +256,16 @@
     }
     
     .feature-card {
-      background: #1e1e1e;
+      background: var(--white);
       border-radius: 16px;
       padding: 2rem;
-      border: 1px solid rgba(255,255,255,0.08);
+      border: 1px solid #E2E8F0;
       transition: all 0.3s;
     }
     
     .feature-card:hover {
       border-color: var(--primary);
-      box-shadow: 0 8px 32px rgba(0,0,0,0.5);
+      box-shadow: 0 20px 40px rgba(79, 70, 229, 0.1);
       transform: translateY(-4px);
     }
     
@@ -294,11 +290,10 @@
       font-size: 1.25rem;
       font-weight: 700;
       margin-bottom: 0.75rem;
-      color: var(--white);
     }
     
     .feature-card p {
-      color: rgba(255,255,255,0.5);
+      color: var(--text-light);
       font-size: 0.95rem;
       line-height: 1.7;
     }
@@ -306,7 +301,7 @@
     /* HOW IT WORKS */
     .how-it-works {
       padding: 5rem 5%;
-      background: var(--bg);
+      background: var(--white);
     }
     
     .steps {
@@ -317,12 +312,15 @@
       margin: 0 auto;
     }
     
-    .step { text-align: center; position: relative; }
+    .step {
+      text-align: center;
+      position: relative;
+    }
     
     .step-num {
       width: 64px;
       height: 64px;
-      background: var(--primary);
+      background: linear-gradient(135deg, var(--primary), var(--primary-dark));
       color: var(--white);
       border-radius: 50%;
       display: flex;
@@ -337,7 +335,6 @@
       font-size: 1.25rem;
       font-weight: 700;
       margin-bottom: 0.75rem;
-      color: var(--text);
     }
     
     .step p {
@@ -360,9 +357,9 @@
     }
     
     .use-case {
-      background: #1e1e1e;
-      border: 1px solid rgba(255,255,255,0.08);
-      border-radius: 16px;
+      background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+      color: var(--white);
+      border-radius: 20px;
       padding: 2.5rem;
     }
     
@@ -370,11 +367,10 @@
       font-size: 1.25rem;
       font-weight: 700;
       margin-bottom: 1rem;
-      color: var(--primary);
     }
     
     .use-case p {
-      color: rgba(255,255,255,0.5);
+      opacity: 0.9;
       font-size: 0.95rem;
       line-height: 1.7;
     }
@@ -382,7 +378,7 @@
     /* PRICING */
     .pricing {
       padding: 5rem 5%;
-      background: var(--bg);
+      background: var(--bg-dark);
     }
     
     .pricing-grid {
@@ -405,14 +401,13 @@
     .pricing-card.popular {
       border-color: var(--primary);
       transform: scale(1.03);
-      box-shadow: 0 8px 32px rgba(0,0,0,0.2);
+      box-shadow: 0 20px 60px rgba(79, 70, 229, 0.2);
     }
     
     .pricing-card h3 {
       font-size: 1.25rem;
       font-weight: 700;
       margin-bottom: 0.5rem;
-      color: var(--text);
     }
     
     .price {
@@ -434,7 +429,10 @@
       margin-bottom: 1.5rem;
     }
     
-    .pricing-features { text-align: left; margin-bottom: 2rem; }
+    .pricing-features {
+      text-align: left;
+      margin-bottom: 2rem;
+    }
     
     .pricing-features li {
       display: flex;
@@ -460,23 +458,18 @@
     }
     
     .faq-item {
-      border-bottom: 1px solid rgba(255,255,255,0.08);
+      border-bottom: 1px solid #E2E8F0;
       padding: 1.5rem 0;
-    }
-    
-    .faq-item:first-of-type {
-      border-top: 1px solid rgba(255,255,255,0.08);
     }
     
     .faq-item h3 {
       font-size: 1.1rem;
       font-weight: 600;
       margin-bottom: 0.75rem;
-      color: var(--white);
     }
     
     .faq-item p {
-      color: rgba(255,255,255,0.5);
+      color: var(--text-light);
       font-size: 0.95rem;
       line-height: 1.7;
     }
@@ -484,7 +477,7 @@
     /* CTA */
     .cta {
       padding: 5rem 5%;
-      background: var(--primary);
+      background: linear-gradient(135deg, var(--primary), var(--primary-dark));
       text-align: center;
       color: var(--white);
     }
@@ -493,7 +486,6 @@
       font-size: 2.5rem;
       font-weight: 800;
       margin-bottom: 1rem;
-      color: var(--white);
     }
     
     .cta p {
@@ -512,15 +504,16 @@
       padding: 1rem 2rem;
     }
     
-    .cta .btn:hover { background: rgba(255,255,255,0.9); }
+    .cta .btn:hover {
+      background: var(--bg);
+    }
     
     /* FOOTER */
     footer {
       padding: 2rem 5%;
       text-align: center;
-      color: rgba(255,255,255,0.35);
+      color: var(--text-light);
       font-size: 0.9rem;
-      background: var(--black);
     }
     
     /* RESPONSIVE */
@@ -531,8 +524,7 @@
       .pricing-card.popular { transform: none; }
       .waitlist-form input { width: 100%; }
     }
-
-</style>
+  </style>
 </head>
 <body>
 
@@ -540,7 +532,7 @@
   <nav>
     <div class="logo">
       <svg class="logo-icon" viewBox="0 0 40 40" fill="none">
-        <circle cx="20" cy="20" r="18" fill="#FE552E"/>
+        <circle cx="20" cy="20" r="18" fill="#4F46E5"/>
         <circle cx="20" cy="14" r="5" fill="white"/>
         <circle cx="12" cy="26" r="4" fill="white" opacity="0.8"/>
         <circle cx="28" cy="26" r="4" fill="white" opacity="0.8"/>
@@ -576,98 +568,72 @@
   <section class="integrations">
     <p class="integrations-label">Works with your tools</p>
     <div class="carousel">
-
       <div class="carousel-item">
-        <img src="data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 32 32%27%3E%3Crect width=%2732%27 height=%2732%27 rx=%274%27 fill=%27%23EA4335%27/%3E%3Cpath d=%27M4 9L16 18L28 9%27 stroke=%27white%27 stroke-width=%272.5%27 stroke-linecap=%27round%27 fill=%27none%27/%3E%3Cpath d=%27M4 9V23H28V9%27 stroke=%27white%27 stroke-width=%272.5%27 stroke-linecap=%27round%27 fill=%27none%27/%3E%3C/svg%3E" width="32" height="32" style="display:block;" loading="lazy" />
+        <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='4' fill='%23EA4335'/%3E%3Cpath d='M4 9L16 18L28 9' stroke='white' stroke-width='2.5' stroke-linecap='round' fill='none'/%3E%3Cpath d='M4 9V23H28V9' stroke='white' stroke-width='2.5' stroke-linecap='round' fill='none'/%3E%3C/svg%3E" width="32" height="32" style="display:block;" loading="lazy" />
         Gmail
       </div>
       <div class="carousel-item">
-        <img src="data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 32 32%27%3E%3Crect width=%2732%27 height=%2732%27 rx=%274%27 fill=%27%234285F4%27/%3E%3Crect x=%277%27 y=%274%27 width=%2718%27 height=%2719%27 rx=%272%27 stroke=%27white%27 stroke-width=%271.5%27 fill=%27none%27/%3E%3Cpath d=%27M11 3V8M21 3V8%27 stroke=%27white%27 stroke-width=%272%27 stroke-linecap=%27round%27/%3E%3Crect x=%2710%27 y=%2713%27 width=%273%27 height=%273%27 rx=%270.5%27 fill=%27white%27/%3E%3Crect x=%2714.5%27 y=%2713%27 width=%273%27 height=%273%27 rx=%270.5%27 fill=%27white%27/%3E%3Crect x=%2719%27 y=%2713%27 width=%273%27 height=%273%27 rx=%270.5%27 fill=%27white%27/%3E%3C/svg%3E" width="32" height="32" style="display:block;" loading="lazy" />
+        <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='4' fill='%234285F4'/%3E%3Crect x='7' y='4' width='18' height='19' rx='2' stroke='white' stroke-width='1.5' fill='none'/%3E%3Cpath d='M11 3V8M21 3V8' stroke='white' stroke-width='2' stroke-linecap='round'/%3E%3Crect x='10' y='13' width='3' height='3' rx='0.5' fill='white'/%3E%3Crect x='14.5' y='13' width='3' height='3' rx='0.5' fill='white'/%3E%3Crect x='19' y='13' width='3' height='3' rx='0.5' fill='white'/%3E%3C/svg%3E" width="32" height="32" style="display:block;" loading="lazy" />
         Google Calendar
       </div>
       <div class="carousel-item">
-        <img src="data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 32 32%27%3E%3Crect width=%2732%27 height=%2732%27 rx=%274%27 fill=%27%230F9D58%27/%3E%3Cpath d=%27M8 4H18L24 11V28H8V4Z%27 stroke=%27white%27 stroke-width=%271.5%27 fill=%27none%27 stroke-linejoin=%27round%27/%3E%3Cpath d=%27M18 4V11H24%27 stroke=%27white%27 stroke-width=%271.5%27 fill=%27none%27 stroke-linejoin=%27round%27/%3E%3Cpath d=%27M11 17H21M11 21H17%27 stroke=%27white%27 stroke-width=%271.5%27 stroke-linecap=%27round%27/%3E%3C/svg%3E" width="32" height="32" style="display:block;" loading="lazy" />
+        <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='4' fill='%230F9D58'/%3E%3Cpath d='M8 4H18L24 11V28H8V4Z' stroke='white' stroke-width='1.5' fill='none' stroke-linejoin='round'/%3E%3Cpath d='M18 4V11H24' stroke='white' stroke-width='1.5' fill='none' stroke-linejoin='round'/%3E%3Cpath d='M11 17H21M11 21H17' stroke='white' stroke-width='1.5' stroke-linecap='round'/%3E%3C/svg%3E" width="32" height="32" style="display:block;" loading="lazy" />
         Google Sheets
       </div>
       <div class="carousel-item">
-        <img src="data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 32 32%27%3E%3Crect width=%2732%27 height=%2732%27 rx=%274%27 fill=%27%23258AF7%27/%3E%3Cpath d=%27M9 5H19L25 11V27H9V5Z%27 stroke=%27white%27 stroke-width=%271.5%27 fill=%27none%27 stroke-linejoin=%27round%27/%3E%3Cpath d=%27M19 5V11H25%27 stroke=%27white%27 stroke-width=%271.5%27 fill=%27none%27 stroke-linejoin=%27round%27/%3E%3Cpath d=%27M12 19H20M12 23H17%27 stroke=%27white%27 stroke-width=%271.5%27 stroke-linecap=%27round%27/%3E%3C/svg%3E" width="32" height="32" style="display:block;" loading="lazy" />
-        Google Docs
-      </div>
-      <div class="carousel-item">
-        <img src="data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 32 32%27%3E%3Cpath d=%27M13 26L20 11H6L13 26Z%27 fill=%27%230066DA%27/%3E%3Cpath d=%27M13 26L20 17.5L27 26H13Z%27 fill=%27%2300AC47%27/%3E%3Cpath d=%27M13 11L20 2L27 11H13Z%27 fill=%27%2300832D%27/%3E%3Cpath d=%27M27 26L20 17.5L13 26H27Z%27 fill=%27%232684FC%27/%3E%3Cpath d=%27M27 11L20 17.5L13 11H27Z%27 fill=%27%23FFB900%27/%3E%3C/svg%3E" width="32" height="32" style="display:block;" loading="lazy" />
-        Google Drive
-      </div>
-      <div class="carousel-item">
-        <img src="data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 32 32%27%3E%3Crect width=%2732%27 height=%2732%27 rx=%274%27 fill=%27%231E1E1E%27/%3E%3Cpath d=%27M8 8H14L15 14H14V8H20V24H14V18H13L12 24H8V8Z%27 fill=%27white%27/%3E%3Cpath d=%27M17 11H23L24 17H23V11H27V24H23L22 17H21V24H17V11Z%27 fill=%27white%27/%3E%3C/svg%3E" width="32" height="32" style="display:block;" loading="lazy" />
+        <svg viewBox="0 0 24 24" fill="#4F46E5"><path d="M4 4h16v16H4V4zm2 2v12h12V6H6zm2 2h8v2H8V8zm0 4h5v2H8v-2zm0 4h8v2H8v-2z"/></svg>
         Notion
       </div>
       <div class="carousel-item">
-        <img src="data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 32 32%27%3E%3Ccircle cx=%2716%27 cy=%2716%27 r=%2714%27 fill=%27%231E1E1E%27/%3E%3Cpath fill-rule=%27evenodd%27 clip-rule=%27evenodd%27 d=%27M16 4C9.925 4 5 9.925 5 16C5 20.055 7.615 23.553 11.114 24.671C11.617 24.741 11.797 24.465 11.797 24.235C11.797 24.027 11.796 23.333 11.796 22.48C9 22.88 8.393 21.19 8.393 21.19C7.68 19.862 6.742 19.5 6.742 19.5C5.637 18.86 6.738 18.865 6.738 18.865C7.834 18.942 8.478 19.91 8.478 19.91C9.525 21.45 10.953 21.08 11.749 20.87C11.868 20.31 12.183 19.93 12.524 19.72C9.86 19.51 7.043 18.5 7.043 13.98C7.043 12.76 7.531 11.79 8.309 11.05C8.19 10.83 7.735 9.79 8.427 7.96C8.427 7.96 9.375 7.58 11.796 9.14C12.565 8.91 13.395 8.79 14.225 8.79C15.055 8.79 15.885 8.91 16.654 9.14C19.075 7.58 20.021 7.96 20.021 7.96C20.715 9.79 20.26 10.83 20.139 11.05C20.917 11.79 21.404 12.76 21.404 13.98C21.404 18.52 18.585 19.5 15.918 19.7C16.339 19.97 16.729 20.47 16.729 21.23C16.729 22.33 16.724 23.24 16.724 24.235C16.724 24.465 16.904 24.745 17.413 24.667C20.908 23.55 23.519 20.055 23.519 16C23.519 9.925 18.595 4 12.52 4H16Z%27 fill=%27white%27/%3E%3C/svg%3E" width="32" height="32" style="display:block;" loading="lazy" />
+        <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Cpath d='M13 26L20 11H6L13 26Z' fill='%230066DA'/%3E%3Cpath d='M13 26L20 17.5L27 26H13Z' fill='%2300AC47'/%3E%3Cpath d='M13 11L20 2L27 11H13Z' fill='%2300832D'/%3E%3Cpath d='M27 26L20 17.5L13 26H27Z' fill='%232684FC'/%3E%3Cpath d='M27 11L20 17.5L13 11H27Z' fill='%23FFB900'/%3E%3C/svg%3E" width="32" height="32" style="display:block;" loading="lazy" />
+        Google Drive
+      </div>
+      <div class="carousel-item">
+        <svg viewBox="0 0 24 24" fill="#333"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
         GitHub
       </div>
       <div class="carousel-item">
-        <img src="data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 32 32%27%3E%3Crect width=%2732%27 height=%2732%27 rx=%278%27 fill=%27%231E1E1E%27/%3E%3Cpath d=%27M8 24L16 8L24 24H8Z%27 fill=%27white%27/%3E%3C/svg%3E" width="32" height="32" style="display:block;" loading="lazy" />
+        <svg viewBox="0 0 24 24" fill="#333"><path d="M12 0L1.5 9.5l10.5 9.5L23 9.5 12 0zm0 4l6.5 6L12 18l-6.5-6.5L12 4z"/></svg>
         Vercel
       </div>
       <div class="carousel-item">
-        <img src="data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 32 32%27%3E%3Crect width=%2732%27 height=%2732%27 rx=%275%27 fill=%27%233ECF8E%27/%3E%3Cpath d=%27M11 22L16 10L21 22%27 stroke=%27white%27 stroke-width=%272.5%27 stroke-linecap=%27round%27 stroke-linejoin=%27round%27 fill=%27none%27/%3E%3Cpath d=%27M9 25H23%27 stroke=%27white%27 stroke-width=%272.5%27 stroke-linecap=%27round%27/%3E%3C/svg%3E" width="32" height="32" style="display:block;" loading="lazy" />
+        <svg viewBox="0 0 24 24" fill="#4F46E5"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
         Supabase
       </div>
       <div class="carousel-item">
-        <img src="data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 32 32%27%3E%3Crect width=%2732%27 height=%2732%27 rx=%275%27 fill=%27%23646B7B%27/%3E%3Cpath d=%27M14.5 13C14.5 11.9 13.88 11.25 12.5 11.25C11.12 11.25 10.5 11.9 10.5 13C10.5 14.1 11.4 15.25 14.5 17.5C17.6 15.25 18.5 14.1 18.5 13C18.5 11.9 17.88 11.25 16.5 11.25C15.12 11.25 14.5 11.9 14.5 13ZM23 19C23 17.35 21.1 16.15 18.5 16.15C15.9 16.15 14 17.35 14 19C14 21.5 18 22 18 22H21C21 22 25 21.5 25 19C25 17.35 23 16.15 20.5 16.15C18 16.15 16.5 17.35 16.5 19%27 fill=%27white%27/%3E%3C/svg%3E" width="32" height="32" style="display:block;" loading="lazy" />
+        <svg viewBox="0 0 24 24" fill="#646B7B"><path d="M4.5 4h15A1.5 1.5 0 0121 5.5v13a1.5 1.5 0 01-1.5 1.5h-15A1.5 1.5 0 013 18.5v-13A1.5 1.5 0 014.5 4zM7 8h10v2H7V8zm0 4h7v2H7v-2z"/></svg>
         Stripe
       </div>
       <div class="carousel-item">
-        <img src="data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 32 32%27%3E%3Ccircle cx=%2716%27 cy=%2716%27 r=%2714%27 fill=%27%232AABEE%27/%3E%3Cpath d=%27M12 17L21 10L14 22L11 18L12 17Z%27 fill=%27white%27/%3E%3C/svg%3E" width="32" height="32" style="display:block;" loading="lazy" />
+        <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Ccircle cx='16' cy='16' r='14' fill='%232AABEE'/%3E%3Cpath d='M12 17L21 10L14 22L11 18L12 17Z' fill='white'/%3E%3C/svg%3E" width="32" height="32" style="display:block;" loading="lazy" />
         Telegram
       </div>
+      <!-- Duplicate for seamless loop -->
       <div class="carousel-item">
-        <img src="data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 32 32%27%3E%3Crect width=%2732%27 height=%2732%27 rx=%274%27 fill=%27%23EA4335%27/%3E%3Cpath d=%27M4 9L16 18L28 9%27 stroke=%27white%27 stroke-width=%272.5%27 stroke-linecap=%27round%27 fill=%27none%27/%3E%3Cpath d=%27M4 9V23H28V9%27 stroke=%27white%27 stroke-width=%272.5%27 stroke-linecap=%27round%27 fill=%27none%27/%3E%3C/svg%3E" width="32" height="32" style="display:block;" loading="lazy" />
+        <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='4' fill='%23EA4335'/%3E%3Cpath d='M4 9L16 18L28 9' stroke='white' stroke-width='2.5' stroke-linecap='round' fill='none'/%3E%3Cpath d='M4 9V23H28V9' stroke='white' stroke-width='2.5' stroke-linecap='round' fill='none'/%3E%3C/svg%3E" width="32" height="32" style="display:block;" loading="lazy" />
         Gmail
       </div>
       <div class="carousel-item">
-        <img src="data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 32 32%27%3E%3Crect width=%2732%27 height=%2732%27 rx=%274%27 fill=%27%234285F4%27/%3E%3Crect x=%277%27 y=%274%27 width=%2718%27 height=%2719%27 rx=%272%27 stroke=%27white%27 stroke-width=%271.5%27 fill=%27none%27/%3E%3Cpath d=%27M11 3V8M21 3V8%27 stroke=%27white%27 stroke-width=%272%27 stroke-linecap=%27round%27/%3E%3Crect x=%2710%27 y=%2713%27 width=%273%27 height=%273%27 rx=%270.5%27 fill=%27white%27/%3E%3Crect x=%2714.5%27 y=%2713%27 width=%273%27 height=%273%27 rx=%270.5%27 fill=%27white%27/%3E%3Crect x=%2719%27 y=%2713%27 width=%273%27 height=%273%27 rx=%270.5%27 fill=%27white%27/%3E%3C/svg%3E" width="32" height="32" style="display:block;" loading="lazy" />
+        <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='4' fill='%234285F4'/%3E%3Crect x='7' y='4' width='18' height='19' rx='2' stroke='white' stroke-width='1.5' fill='none'/%3E%3Cpath d='M11 3V8M21 3V8' stroke='white' stroke-width='2' stroke-linecap='round'/%3E%3Crect x='10' y='13' width='3' height='3' rx='0.5' fill='white'/%3E%3Crect x='14.5' y='13' width='3' height='3' rx='0.5' fill='white'/%3E%3Crect x='19' y='13' width='3' height='3' rx='0.5' fill='white'/%3E%3C/svg%3E" width="32" height="32" style="display:block;" loading="lazy" />
         Google Calendar
       </div>
       <div class="carousel-item">
-        <img src="data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 32 32%27%3E%3Crect width=%2732%27 height=%2732%27 rx=%274%27 fill=%27%230F9D58%27/%3E%3Cpath d=%27M8 4H18L24 11V28H8V4Z%27 stroke=%27white%27 stroke-width=%271.5%27 fill=%27none%27 stroke-linejoin=%27round%27/%3E%3Cpath d=%27M18 4V11H24%27 stroke=%27white%27 stroke-width=%271.5%27 fill=%27none%27 stroke-linejoin=%27round%27/%3E%3Cpath d=%27M11 17H21M11 21H17%27 stroke=%27white%27 stroke-width=%271.5%27 stroke-linecap=%27round%27/%3E%3C/svg%3E" width="32" height="32" style="display:block;" loading="lazy" />
+        <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='4' fill='%230F9D58'/%3E%3Cpath d='M8 4H18L24 11V28H8V4Z' stroke='white' stroke-width='1.5' fill='none' stroke-linejoin='round'/%3E%3Cpath d='M18 4V11H24' stroke='white' stroke-width='1.5' fill='none' stroke-linejoin='round'/%3E%3Cpath d='M11 17H21M11 21H17' stroke='white' stroke-width='1.5' stroke-linecap='round'/%3E%3C/svg%3E" width="32" height="32" style="display:block;" loading="lazy" />
         Google Sheets
       </div>
       <div class="carousel-item">
-        <img src="data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 32 32%27%3E%3Crect width=%2732%27 height=%2732%27 rx=%274%27 fill=%27%23258AF7%27/%3E%3Cpath d=%27M9 5H19L25 11V27H9V5Z%27 stroke=%27white%27 stroke-width=%271.5%27 fill=%27none%27 stroke-linejoin=%27round%27/%3E%3Cpath d=%27M19 5V11H25%27 stroke=%27white%27 stroke-width=%271.5%27 fill=%27none%27 stroke-linejoin=%27round%27/%3E%3Cpath d=%27M12 19H20M12 23H17%27 stroke=%27white%27 stroke-width=%271.5%27 stroke-linecap=%27round%27/%3E%3C/svg%3E" width="32" height="32" style="display:block;" loading="lazy" />
-        Google Docs
-      </div>
-      <div class="carousel-item">
-        <img src="data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 32 32%27%3E%3Cpath d=%27M13 26L20 11H6L13 26Z%27 fill=%27%230066DA%27/%3E%3Cpath d=%27M13 26L20 17.5L27 26H13Z%27 fill=%27%2300AC47%27/%3E%3Cpath d=%27M13 11L20 2L27 11H13Z%27 fill=%27%2300832D%27/%3E%3Cpath d=%27M27 26L20 17.5L13 26H27Z%27 fill=%27%232684FC%27/%3E%3Cpath d=%27M27 11L20 17.5L13 11H27Z%27 fill=%27%23FFB900%27/%3E%3C/svg%3E" width="32" height="32" style="display:block;" loading="lazy" />
-        Google Drive
-      </div>
-      <div class="carousel-item">
-        <img src="data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 32 32%27%3E%3Crect width=%2732%27 height=%2732%27 rx=%274%27 fill=%27%231E1E1E%27/%3E%3Cpath d=%27M8 8H14L15 14H14V8H20V24H14V18H13L12 24H8V8Z%27 fill=%27white%27/%3E%3Cpath d=%27M17 11H23L24 17H23V11H27V24H23L22 17H21V24H17V11Z%27 fill=%27white%27/%3E%3C/svg%3E" width="32" height="32" style="display:block;" loading="lazy" />
+        <svg viewBox="0 0 24 24" fill="#4F46E5"><path d="M4 4h16v16H4V4zm2 2v12h12V6H6zm2 2h8v2H8V8zm0 4h5v2H8v-2zm0 4h8v2H8v-2z"/></svg>
         Notion
       </div>
       <div class="carousel-item">
-        <img src="data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 32 32%27%3E%3Ccircle cx=%2716%27 cy=%2716%27 r=%2714%27 fill=%27%231E1E1E%27/%3E%3Cpath fill-rule=%27evenodd%27 clip-rule=%27evenodd%27 d=%27M16 4C9.925 4 5 9.925 5 16C5 20.055 7.615 23.553 11.114 24.671C11.617 24.741 11.797 24.465 11.797 24.235C11.797 24.027 11.796 23.333 11.796 22.48C9 22.88 8.393 21.19 8.393 21.19C7.68 19.862 6.742 19.5 6.742 19.5C5.637 18.86 6.738 18.865 6.738 18.865C7.834 18.942 8.478 19.91 8.478 19.91C9.525 21.45 10.953 21.08 11.749 20.87C11.868 20.31 12.183 19.93 12.524 19.72C9.86 19.51 7.043 18.5 7.043 13.98C7.043 12.76 7.531 11.79 8.309 11.05C8.19 10.83 7.735 9.79 8.427 7.96C8.427 7.96 9.375 7.58 11.796 9.14C12.565 8.91 13.395 8.79 14.225 8.79C15.055 8.79 15.885 8.91 16.654 9.14C19.075 7.58 20.021 7.96 20.021 7.96C20.715 9.79 20.26 10.83 20.139 11.05C20.917 11.79 21.404 12.76 21.404 13.98C21.404 18.52 18.585 19.5 15.918 19.7C16.339 19.97 16.729 20.47 16.729 21.23C16.729 22.33 16.724 23.24 16.724 24.235C16.724 24.465 16.904 24.745 17.413 24.667C20.908 23.55 23.519 20.055 23.519 16C23.519 9.925 18.595 4 12.52 4H16Z%27 fill=%27white%27/%3E%3C/svg%3E" width="32" height="32" style="display:block;" loading="lazy" />
+        <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Cpath d='M13 26L20 11H6L13 26Z' fill='%230066DA'/%3E%3Cpath d='M13 26L20 17.5L27 26H13Z' fill='%2300AC47'/%3E%3Cpath d='M13 11L20 2L27 11H13Z' fill='%2300832D'/%3E%3Cpath d='M27 26L20 17.5L13 26H27Z' fill='%232684FC'/%3E%3Cpath d='M27 11L20 17.5L13 11H27Z' fill='%23FFB900'/%3E%3C/svg%3E" width="32" height="32" style="display:block;" loading="lazy" />
+        Google Drive
+      </div>
+      <div class="carousel-item">
+        <svg viewBox="0 0 24 24" fill="#333"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
         GitHub
-      </div>
-      <div class="carousel-item">
-        <img src="data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 32 32%27%3E%3Crect width=%2732%27 height=%2732%27 rx=%278%27 fill=%27%231E1E1E%27/%3E%3Cpath d=%27M8 24L16 8L24 24H8Z%27 fill=%27white%27/%3E%3C/svg%3E" width="32" height="32" style="display:block;" loading="lazy" />
-        Vercel
-      </div>
-      <div class="carousel-item">
-        <img src="data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 32 32%27%3E%3Crect width=%2732%27 height=%2732%27 rx=%275%27 fill=%27%233ECF8E%27/%3E%3Cpath d=%27M11 22L16 10L21 22%27 stroke=%27white%27 stroke-width=%272.5%27 stroke-linecap=%27round%27 stroke-linejoin=%27round%27 fill=%27none%27/%3E%3Cpath d=%27M9 25H23%27 stroke=%27white%27 stroke-width=%272.5%27 stroke-linecap=%27round%27/%3E%3C/svg%3E" width="32" height="32" style="display:block;" loading="lazy" />
-        Supabase
-      </div>
-      <div class="carousel-item">
-        <img src="data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 32 32%27%3E%3Crect width=%2732%27 height=%2732%27 rx=%275%27 fill=%27%23646B7B%27/%3E%3Cpath d=%27M14.5 13C14.5 11.9 13.88 11.25 12.5 11.25C11.12 11.25 10.5 11.9 10.5 13C10.5 14.1 11.4 15.25 14.5 17.5C17.6 15.25 18.5 14.1 18.5 13C18.5 11.9 17.88 11.25 16.5 11.25C15.12 11.25 14.5 11.9 14.5 13ZM23 19C23 17.35 21.1 16.15 18.5 16.15C15.9 16.15 14 17.35 14 19C14 21.5 18 22 18 22H21C21 22 25 21.5 25 19C25 17.35 23 16.15 20.5 16.15C18 16.15 16.5 17.35 16.5 19%27 fill=%27white%27/%3E%3C/svg%3E" width="32" height="32" style="display:block;" loading="lazy" />
-        Stripe
-      </div>
-      <div class="carousel-item">
-        <img src="data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 32 32%27%3E%3Ccircle cx=%2716%27 cy=%2716%27 r=%2714%27 fill=%27%232AABEE%27/%3E%3Cpath d=%27M12 17L21 10L14 22L11 18L12 17Z%27 fill=%27white%27/%3E%3C/svg%3E" width="32" height="32" style="display:block;" loading="lazy" />
-        Telegram
       </div>
     </div>
-
-    
   </section>
 
   <!-- FEATURES -->
